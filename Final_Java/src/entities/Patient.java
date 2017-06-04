@@ -1,5 +1,63 @@
 package entities;
 
-public class Patient {
+import java.util.Date;
 
+public class Patient {
+	
+	int idPatient;
+	String surname;
+	String name;
+	Date birthdate;
+//	int idHP;
+	int affiliateNumberHP;
+	
+	//set
+	public void setidPatient (int id) {
+		this.idPatient = id;
+	}
+	
+	public void setsurname (String surname) {
+		this.surname = surname;
+	}
+	
+	public void setname (String name) {
+		this.name = name;
+	}
+	
+	public void setbirthdate (Date birthdate) {
+		this.birthdate = birthdate;
+	}
+	
+/*	public void setidHP (int idHP) {
+		this.idHP = idHP;
+	}*/
+	
+	public void setaffiliateNumberHP (int number) {
+		this.affiliateNumberHP = number;
+	}
+	
+	//get
+	public int getidPatient () {
+		return idPatient;
+	}
+	
+	public String getsurname () {
+		return surname;
+	}
+	
+	public String getname () {
+		return name;
+	}
+	
+	public Date getbirthdate () {
+		return birthdate;
+	}
+	
+/*	public int getidHP () {
+		return idHP;
+	}*/
+	
+	public int getaffiliateNumberHP () {
+		return affiliateNumberHP;
+	}
 }
