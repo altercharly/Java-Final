@@ -9,6 +9,7 @@ import entities.*;
 public class GenericDrugCatalog {
 	//TODO: create the method to conect with the DB
     public ArrayList<GenericDrug> getDrugsWithSameGeneric (String generic) {
+        //TODO: Think a little more about this method, the idea is get all the medicine whit that generic, maybe this can be in the medicineCatalog
         ArrayList<GenericDrug> drugs = new ArrayList<GenericDrug>();
         drugs = null;
 
@@ -21,5 +22,9 @@ public class GenericDrugCatalog {
         genericDrugs = null;
 
         return genericDrugs
+    }
+
+    public void saveNewgenericDrug (GenericDrug drug) {
+        //TODO: save in the DB the new genericdrugs and return de new ID
     }
 }

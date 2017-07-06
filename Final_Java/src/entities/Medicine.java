@@ -7,7 +7,7 @@ public class Medicine {
 	int idMedicine;
 	String description;
 	String name;
-	ArrayList genericDrugs = null;  //TODO: add the get and set for this
+	ArrayList genericDrugs = null;
 	
 	//set
 	public void setidMedicine (int id) {
