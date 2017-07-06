@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
+
 public class Medicine {
 	
 	int idMedicine;
 	String description;
 	String name;
+	ArrayList genericDrugs = null;  //TODO: add the get and set for this
 	
 	//set
 	public void setidMedicine (int id) {
@@ -17,6 +20,10 @@ public class Medicine {
 	
 	public void setname (String name) {
 		this.name = name;
+	}
+
+	public void setgenericDrugs (GenericDrug drug) {
+		this.genericDrugs.add(drug); 
 	}
 	
 	//get
@@ -31,5 +38,9 @@ public class Medicine {
 	
 	public String getname () {
 		return name;
+	}
+
+	public ArrayList<genericDrugs> getgenericDrugs () {
+		return genericDrugs;
 	}
 }
