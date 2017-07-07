@@ -1,13 +1,11 @@
 package entities;
 
-import java.util.ArrayList;
-
 public class Medicine {
 	
 	int idMedicine;
 	String description;
 	String name;
-	ArrayList genericDrugs = null;
+	GenericDrug generic = null;
 	
 	//set
 	public void setidMedicine (int id) {
@@ -40,7 +38,7 @@ public class Medicine {
 		return name;
 	}
 
-	public ArrayList<genericDrugs> getgenericDrugs () {
+	public GenericDrug getgeneric () {
 		return genericDrugs;
 	}
 }

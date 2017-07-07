@@ -25,6 +25,6 @@ public class GenericDrugCatalog {
     }
 
     public void saveNewgenericDrug (GenericDrug drug) {
-        //TODO: save in the DB the new genericdrugs and return de new ID
+        //TODO: save in the DB the new genericdrugs and return de new ID (optional)
     }
 }
