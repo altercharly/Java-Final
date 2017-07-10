@@ -21,7 +21,7 @@ public class Medicine {
 	}
 
 	public void setgenericDrugs (GenericDrug drug) {
-		this.genericDrugs.add(drug); 
+		this.generic=drug; 
 	}
 	
 	//get
@@ -39,6 +39,6 @@ public class Medicine {
 	}
 
 	public GenericDrug getgeneric () {
-		return genericDrugs;
+		return generic;
 	}
 }
