@@ -5,6 +5,7 @@ public class Medicine {
 	int idMedicine;
 	String description;
 	String name;
+	GenericDrug generic = null;
 	
 	//set
 	public void setidMedicine (int id) {
@@ -17,6 +18,10 @@ public class Medicine {
 	
 	public void setname (String name) {
 		this.name = name;
+	}
+
+	public void setgenericDrugs (GenericDrug drug) {
+		this.generic = drug; 
 	}
 	
 	//get
@@ -31,5 +36,9 @@ public class Medicine {
 	
 	public String getname () {
 		return name;
+	}
+
+	public GenericDrug getgeneric () {
+		return generic;
 	}
 }
