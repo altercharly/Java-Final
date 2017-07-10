@@ -2,12 +2,12 @@ package entities;
 
 public class GenericDrug {
 
-	int drugId;
+	int idDrug;
 	String drugName;
 	
 	//set
-	public void setdrugId (int Id) {
-		this.drugId = Id;
+	public void setidDrug (int Id) {
+		this.idDrug = Id;
 	}
 	
 	public void setdrugName (String name) {
@@ -15,8 +15,8 @@ public class GenericDrug {
 	}
 	
 	//get
-	int getdrugId () {
-		return drugId;
+	int getidDrug () {
+		return idDrug;
 	}
 	
 	String getdrugName () {

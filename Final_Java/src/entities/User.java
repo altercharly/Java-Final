@@ -7,14 +7,13 @@ public class User {
 	String surname;
 	String name;
 	String type;
-	int id;		
+	int idUser;		
 	String password;
 	
 	public User(){	
 		
 	}
-    
-    
+        
 	public User(int dni, String name, String surname){
 		setDni(dni);
 		setName(name);
@@ -42,8 +41,8 @@ public class User {
 		this.password = password;
 	}
 	
-	public void setId (int id) {
-		this.id = id;
+	public void setidUser (int id) {
+		this.idUser = id;
 	}
 	
 	public void setType (String type) {
@@ -71,8 +70,8 @@ public class User {
 		return password;
 	}
 
-	public int getId () {
-		return id;
+	public int getidUser () {
+		return idUser;
 	}
 	
 	public String getType () {
