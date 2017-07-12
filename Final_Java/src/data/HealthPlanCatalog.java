@@ -73,7 +73,7 @@ public class HealthPlanCatalog {
 			try {
 				if(rs!=null ) rs.close();
 				if(stmt != null) stmt.close();
-				message = "Professional not added";
+				message = "Health Plan not added";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

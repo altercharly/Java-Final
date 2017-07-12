@@ -52,7 +52,7 @@ public class ProfessionalCatalog {
         //TODO: Insert into the DB the new pro
     	ResultSet rs=null;
 		PreparedStatement stmt=null;
-		
+		String message = "Professional not added";
 		
 		try {
 			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
@@ -66,7 +66,7 @@ public class ProfessionalCatalog {
 			rs=stmt.getGeneratedKeys();
 			
 			if(rs!=null && rs.next()){
-			//	pro.setidProffesional(rs.getInt(1));
+				message = "Professional added";
 			}
 			
 		} catch (SQLException e) {
@@ -78,7 +78,7 @@ public class ProfessionalCatalog {
 			try {
 				if(rs!=null ) rs.close();
 				if(stmt != null) stmt.close();
-				String message = "Professional not added";
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -88,16 +88,12 @@ public class ProfessionalCatalog {
 			FactoryConnection.getInstancia().releaseConn();
 		}
     	
-    	
-    	
-    	String message = "Professional added";
-
         return message;
     }
 
     public String deleteProfessional (int number) {
         //TODO: Delete from professional where registrationNumber === number
-        
+    	String message = "Professional not deleted";
     	PreparedStatement stmt=null;
 		try {
 			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
@@ -114,7 +110,7 @@ public class ProfessionalCatalog {
 		{
 			try {
 				if(stmt!=null) stmt.close();
-				String message = "Professional not deleted";
+				 message = "Professional deleted";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -127,7 +123,7 @@ public class ProfessionalCatalog {
 	}
     	
 
-		String message = "Professional deleted";
+		
 		return message;
     }
 }
