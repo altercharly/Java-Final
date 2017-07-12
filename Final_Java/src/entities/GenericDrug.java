@@ -15,11 +15,11 @@ public class GenericDrug {
 	}
 	
 	//get
-	int getidDrug () {
+	public int getidDrug() {
 		return idDrug;
 	}
 	
-	String getdrugName () {
+	public String getdrugName () {
 		return drugName;
 	}
 	

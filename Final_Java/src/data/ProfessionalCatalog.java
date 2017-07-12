@@ -19,7 +19,7 @@ public class ProfessionalCatalog {
 		
 			try {
 			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select idProffesional, name, surname, registrationNumber from proffesional where registrationNumbuer = ?"
+					"select idProffesional, name, surname, registrationNumber from proffesional where registrationNumber = ?"
 					);
 			stmt.setInt(1, number);
 			rs = stmt.executeQuery();
@@ -78,10 +78,11 @@ public class ProfessionalCatalog {
 			try {
 				if(rs!=null ) rs.close();
 				if(stmt != null) stmt.close();
+				String message = "Professional not added";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				String message = "Professional not added";
+				
 			}
 			
 			FactoryConnection.getInstancia().releaseConn();
@@ -113,10 +114,11 @@ public class ProfessionalCatalog {
 		{
 			try {
 				if(stmt!=null) stmt.close();
+				String message = "Professional not deleted";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				String message = "Professional not deleted";
+				
 			}
 			FactoryConnection.getInstancia().releaseConn();
 		
