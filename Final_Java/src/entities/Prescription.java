@@ -9,7 +9,7 @@ public class Prescription {
 	int idpatient;
 	int idproffesional;
 	int idItem;  // think if this have to be an array
-	int total;
+	double total;
 	
 	//set
 	public void setidprescription (int id) {
@@ -32,7 +32,7 @@ public class Prescription {
 		this.idItem = id;
 	}
 	
-	public void setTotal (int total) {
+	public void setTotal (double total) {
 		this.total = total;
 	}
 	

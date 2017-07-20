@@ -2,7 +2,7 @@ package entities;
 
 public class Item {
 	
-	int idItem;
+	int idItem, idmedicine, idpresentation;
 	int cantStock;
 	float price;
 	
@@ -30,5 +30,22 @@ public class Item {
 	
 	public float getprice () {
 		return price;
+	}
+
+	
+	public int getIdmedicine() {
+		return idmedicine;
+	}
+
+	public void setIdmedicine(int idmedicine) {
+		this.idmedicine = idmedicine;
+	}
+
+	public int getIdpresentation() {
+		return idpresentation;
+	}
+
+	public void setIdpresentation(int idepresentation) {
+		this.idpresentation = idepresentation;
 	}
 }

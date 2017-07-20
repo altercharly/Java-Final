@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
+import entities.Prescription;
+
 public class PrescriptionCatalog {
 
 	public PrescriptionCatalog() {
@@ -56,4 +58,54 @@ public class PrescriptionCatalog {
 		
 		return prescriptions;
 	}
+
+	public String addPrescription (Prescription prescription) {
+        //TODO: Insert the new prescription in the DB
+
+       ResultSet rs=null;
+              PreparedStatement stmt=null;
+              String message = "New prescription not added";
+
+              try {
+                      stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
+                    		  "insert into prescription (idPrescription, prescriptionDate, idpatient, idproffesional,total) values (?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+                      stmt.setInt(1, prescription.getidPrescription());
+                      stmt.setDate(2, (java.sql.Date) prescription.getprescriptionDate());
+                      stmt.setInt(3, prescription.getidpatient());
+                      stmt.setInt(4, prescription.getidproffesional());
+                      stmt.setDouble(5, prescription.getTotal());
+                      stmt.execute();
+
+                      rs=stmt.getGeneratedKeys();
+
+                      if(rs!=null && rs.next()){
+                               message = "New prescription added";
+                      }
+
+              } catch (SQLException e) {
+                      // TODO Auto-generated catch block
+                      e.printStackTrace();
+              }
+              finally{
+
+                      try {
+                              if(rs!=null ) rs.close();
+                              if(stmt != null) stmt.close();
+                              message = "New prescription not added";
+                      } catch (SQLException e) {
+                              // TODO Auto-generated catch block
+                              e.printStackTrace();
+
+                      }
+
+                      FactoryConnection.getInstancia().releaseConn();
+              }
+
+       
+
+        return message;
+    }
+
+
+
 }
