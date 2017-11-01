@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 
 
+import java.util.ArrayList;
+
 import entities.Item;
 import entities.Prescription;
 import entities.Prescription_Item;
@@ -107,4 +109,43 @@ public class ItemCatalog {
 
 
            
+
+	public ArrayList<Item> getItemsbyPrescription (int idmedicine) {
+        //TODO: select from item where idmedicine = idmedicine
+        		ResultSet rs=null;
+               PreparedStatement stmt=null;
+               ArrayList<Item> items = new  ArrayList<Item>();
+                       try {
+                       stmt =   FactoryConnection.getInstancia().getConn().prepareStatement(
+                                       "select iditem, idpresentation, idmedicine, price, cantstock from item where idmedicine = ?");
+                       stmt.setInt(1, idmedicine);
+                       rs = stmt.executeQuery();
+                       if(rs !=null && rs.next()){
+                               Item i = new Item();
+                               i.setidItem(rs.getInt("iditem"));
+                               i.setIdpresentation(rs.getInt("idpresentation"));
+                               i.setIdmedicine(rs.getInt("idmedicine"));
+                               i.setprice(rs.getFloat("price"));
+                               i.setcantStock(rs.getInt("cantstock"));
+                               items.add(i);
+
+                       }
+               } catch (SQLException e) {
+                       // TODO Auto-generated catch block
+                       e.printStackTrace();
+               }
+               finally
+               {
+                       try {
+                               if(rs!=null)rs.close();
+                               if(stmt!=null) stmt.close();
+                       } catch (SQLException e) {
+                               // TODO Auto-generated catch block
+                               e.printStackTrace();
+                       }
+                       FactoryConnection.getInstancia().releaseConn();
+               }
+        return items;
+    }
+
 }

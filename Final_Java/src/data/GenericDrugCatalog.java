@@ -102,4 +102,9 @@ public class GenericDrugCatalog {
 
         return message;
     }
+
+	public GenericDrug getGenericDrug(String gdrug) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

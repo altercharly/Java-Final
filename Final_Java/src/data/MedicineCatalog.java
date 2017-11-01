@@ -99,7 +99,7 @@ public class MedicineCatalog {
         return message;
     }
 
-    public ArrayList<Medicine> getMedicineWithSameGeneric (String generic) {
+    public ArrayList<Medicine> getMedicineWithSameGeneric (int generic) {
         //TODO: Think a little more about this method, the idea is get all the medicine whit that generic
         ArrayList<Medicine> medicines = new ArrayList<Medicine>();
         medicines = null;
@@ -112,7 +112,7 @@ public class MedicineCatalog {
 		try 
 		{			
 			sentencia= con.prepareStatement(sql);
-			sentencia.setString(1, generic );
+			sentencia.setInt(1, generic );
 			rs= sentencia.executeQuery();
 			
 			while (rs !=null && rs.next()){
@@ -121,7 +121,7 @@ public class MedicineCatalog {
 				medicine.setdescription(rs.getString("description"));
 				medicine.setname(rs.getString("name"));
 				GenericDrug drug = null;
-				drug.setdrugName(rs.getString("generic"));
+				drug.setidDrug(rs.getInt("generic"));
 				medicine.setgenericDrugs(drug);
 				medicines.add(medicine);
 			}

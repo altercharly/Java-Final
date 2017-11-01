@@ -1,6 +1,7 @@
 package business;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import data.*;
@@ -96,5 +97,24 @@ public static String getDate(Date date) {
     return format.format(date);
 }
 
+public GenericDrug getGenericDrug (String gdrug){
+//gets a generic drug giving the name
+	
+	GenericDrug genericdrug = new GenericDrug();
+	GenericDrugCatalog gdrugcatalog = new GenericDrugCatalog();
+	genericdrug= gdrugcatalog.getGenericDrug(gdrug);
+	
+	
+	return genericdrug;
+}
 
+public ArrayList<Medicine> getMedicineByDrug (int idgdrug){
+	// returns all the medicine with the same generic drug
+	
+	ArrayList<Medicine> medicines = new ArrayList<Medicine>();
+	MedicineCatalog mcatalog = new MedicineCatalog();
+	medicines=mcatalog.getMedicineWithSameGeneric(idgdrug);
+	
+	return medicines;
+}
 }
