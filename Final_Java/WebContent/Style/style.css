@@ -1,0 +1,75 @@
+* {
+  text-align: center;
+  background-color: GhostWhite;
+  font-size: 46px;
+  font-family: cursive;
+  color: black;
+}
+
+.header {
+  background-color: Aquamarine;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  margin-bottom: -30px;
+}
+
+.logo {
+	background-color: Aquamarine;
+	display: inline-block;
+	text-align: left;
+	margin-top: 0.5%;
+	margin-left: 1.5%;
+	width: 4%;
+	height: 4%;
+}
+
+.header-tittle {
+	background-color: Aquamarine;
+	display: inline-block;
+	margin-top: 0.5%;
+	margin-left: 1.5%;
+	text-aligne: center;
+	color: white;	
+	font-family: times;
+}
+
+.body {
+	text-align:center;
+}
+
+.form-signin {
+	background-color: white;
+	margin: 6% 10% 6%;
+	display: inline-block;
+	text-align: center;
+	width: 35%;
+	height:15%;
+	padding:1.5%;
+	border: 2px solid gray;
+    border-radius: 5px;
+}
+
+.form-signin-heading {
+	background-color: white;
+	color: green;
+	text-decoration: underline;
+	vertical-align: top;
+	margin-top: 0.5%;	
+}
+
+.form-control {
+	padding-left: 1%;
+	text-align: center;
+}
+
+.btn {
+	width: 70%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 3.5% 0%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
