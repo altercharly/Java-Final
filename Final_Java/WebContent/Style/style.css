@@ -1,17 +1,18 @@
 * {
-  text-align: center;
-  background-color: GhostWhite;
-  font-size: 46px;
-  font-family: cursive;
-  color: black;
+	text-align: center;
+	background-color: GhostWhite;
+	font-size: 46px;
+	font-family: cursive;
+	color: black;
 }
 
 .header {
-  background-color: Aquamarine;
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  margin-bottom: -30px;
+	background-color: Aquamarine;
+	width: 100%;
+	height: 100%;
+	text-align: left;
+	border-radius: 5px;
+	box-shadow: 5px 5px 4px darkcyan;
 }
 
 .logo {
@@ -28,14 +29,16 @@
 	background-color: Aquamarine;
 	display: inline-block;
 	margin-top: 0.5%;
+	margin-bottom: 0.5%;
 	margin-left: 1.5%;
-	text-aligne: center;
-	color: white;	
+	text-align: center;
+	color: black;	
 	font-family: times;
 }
 
-.body {
+.body-container {
 	text-align:center;
+	margin: inherit;
 }
 
 .form-signin {
@@ -59,8 +62,13 @@
 }
 
 .form-control {
-	padding-left: 1%;
 	text-align: center;
+	background-color: lightgrey;
+	width: 95%;
+}
+
+.sr-only {
+	background-color: white;
 }
 
 .btn {
