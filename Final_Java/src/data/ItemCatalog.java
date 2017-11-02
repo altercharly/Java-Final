@@ -110,7 +110,7 @@ public class ItemCatalog {
 
            
 
-	public ArrayList<Item> getItemsbyPrescription (int idmedicine) {
+	public ArrayList<Item> getItemsbyMedicine (int idmedicine) {
         //TODO: select from item where idmedicine = idmedicine
         		ResultSet rs=null;
                PreparedStatement stmt=null;
@@ -147,5 +147,43 @@ public class ItemCatalog {
                }
         return items;
     }
+	public Item getItem(int idmedicine, int idpresentation) {
+		 //TODO: select from item where idmedicine = idmedicine and idpresentation= idpresentation
+		ResultSet rs=null;
+       PreparedStatement stmt=null;
+       Item i= new Item();
+               try {
+               stmt =   FactoryConnection.getInstancia().getConn().prepareStatement(
+                               "select iditem, idpresentation, idmedicine, price, cantstock from item where idmedicine = ? and idpresentation = ? ");
+               stmt.setInt(1, idmedicine);
+               stmt.setInt(2, idpresentation);
+               rs = stmt.executeQuery();
+               if(rs !=null && rs.next()){
+                       
+                       i.setidItem(rs.getInt("iditem"));
+                       i.setIdpresentation(rs.getInt("idpresentation"));
+                       i.setIdmedicine(rs.getInt("idmedicine"));
+                       i.setprice(rs.getFloat("price"));
+                       i.setcantStock(rs.getInt("cantstock"));
+                       
+
+               }
+       } catch (SQLException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+       }
+       finally
+       {
+               try {
+                       if(rs!=null)rs.close();
+                       if(stmt!=null) stmt.close();
+               } catch (SQLException e) {
+                       // TODO Auto-generated catch block
+                       e.printStackTrace();
+               }
+               FactoryConnection.getInstancia().releaseConn();
+       }
+return i;
+	}
 
 }

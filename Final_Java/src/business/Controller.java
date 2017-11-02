@@ -117,4 +117,20 @@ public ArrayList<Medicine> getMedicineByDrug (int idgdrug){
 	
 	return medicines;
 }
+
+public ArrayList<Presentation> getPresentationByMedicine (int idmedicine){
+
+	ArrayList<Presentation> presentations = new ArrayList<Presentation>();
+	PresentationCatalog pcatalog = new PresentationCatalog();
+	presentations=pcatalog.getPresentationByMedicine(idmedicine);
+	
+	return presentations;
+}
+
+public Item getItem (int idmedicine, int idpresentation){
+	Item item = new Item();
+	ItemCatalog icatalog = new ItemCatalog();
+	item = icatalog.getItem(idmedicine, idpresentation);
+	return item;
+}
 }

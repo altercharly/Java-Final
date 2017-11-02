@@ -14,7 +14,7 @@ public class FactoryConnection {
 	private String port="3306";
 	private String user="root";
 	private String pass="root";
-	private String db="farmacy";
+	private String db="pharmacy";
 	
 	private Connection conn;
 	private int cantCon;

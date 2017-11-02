@@ -14,7 +14,7 @@ public class Presentation {
 		this.description = description;
 	}
 	
-	//get
+	
 	
 	public int getIdPresentation () {
 		return idPresentation;
