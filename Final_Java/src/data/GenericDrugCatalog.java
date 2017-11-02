@@ -28,7 +28,7 @@ public class GenericDrugCatalog {
 			while (rs !=null && rs.next()){
 				GenericDrug drug = new GenericDrug();
 				drug.setidDrug(rs.getInt("idDrug"));
-				drug.setdrugName(rs.getString("drugName"));
+				drug.setdrugName(rs.getString("name"));
 				
 				genericDrugs.add(drug);
 			}
@@ -69,7 +69,7 @@ public class GenericDrugCatalog {
 		
 		try {
 			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-					"insert into genericDrug (drugName) values (?)",PreparedStatement.RETURN_GENERATED_KEYS);
+					"insert into genericDrug (name) values (?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, drug.getdrugName());	
 			stmt.execute();
 			rs=stmt.getGeneratedKeys();
@@ -103,8 +103,39 @@ public class GenericDrugCatalog {
         return message;
     }
 
-	public GenericDrug getGenericDrug(String gdrug) {
-		// TODO Auto-generated method stub
-		return null;
+	public GenericDrug getGenericDrug(String drugname) {
+		//TODO: return all the genericdrugs to select one when create a new medicine
+        GenericDrug gdrug = new GenericDrug();
+        ResultSet rs=null;
+		PreparedStatement stmt=null;
+		
+			try {
+			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
+					"select * from genericdrug where name = ?"
+					);
+			stmt.setString(1, drugname);
+			rs = stmt.executeQuery();
+			if(rs !=null && rs.next()){
+		    	gdrug.setidDrug(rs.getInt("idDrug"));
+				gdrug.setdrugName(rs.getString("name"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				if(rs!=null)rs.close();
+				if(stmt!=null) stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			FactoryConnection.getInstancia().releaseConn();
+		}
+        
+        return gdrug;
 	}
 }
