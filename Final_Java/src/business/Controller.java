@@ -133,4 +133,31 @@ public Item getItem (int idmedicine, int idpresentation){
 	item = icatalog.getItem(idmedicine, idpresentation);
 	return item;
 }
+
+public void updateCantItem (Item item, int cant){
+	//sets the new cant of the item and updates in the DB
+	ItemCatalog icatalog = new ItemCatalog();
+	int newCant = item.getcantStock()-cant;
+	item.setcantStock(newCant);
+	icatalog.updateItem(item);
+}
+
+public double calcPriceItem (Item item, int cant){
+	double priceItem;
+	priceItem=item.getprice()*cant;
+	return priceItem;
+}
+
+
+public void setPrescription(Prescription p){
+	PrescriptionCatalog pcatalog = new PrescriptionCatalog();
+	pcatalog.addPrescription(p);
+}
+
+public void setPrescription_Item(Prescription_Item pi){
+	Prescription_ItemCatalog picatalog = new Prescription_ItemCatalog();
+	picatalog.addPrescriptionItem(pi);
+}
+
+
 }
