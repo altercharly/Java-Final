@@ -17,7 +17,7 @@ public class GenericDrugCatalog {
         ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
         genericDrugs = null;
  		
-		String sql="select * from genericDrug";
+		String sql="select * from genericdrug";
 		PreparedStatement sentencia=null;
 		ResultSet rs=null;
 		Connection con = FactoryConnection.getInstancia().getConn();
@@ -69,7 +69,7 @@ public class GenericDrugCatalog {
 		
 		try {
 			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-					"insert into genericDrug (name) values (?)",PreparedStatement.RETURN_GENERATED_KEYS);
+					"insert into genericdrug (name) values (?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, drug.getdrugName());	
 			stmt.execute();
 			rs=stmt.getGeneratedKeys();

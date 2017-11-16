@@ -159,5 +159,10 @@ public void setPrescription_Item(Prescription_Item pi){
 	picatalog.addPrescriptionItem(pi);
 }
 
+public void addPatient (Patient patient){
+	
+	PatientCatalog cpatient = new PatientCatalog();
+cpatient.addPatient(patient);
+}
 
 }

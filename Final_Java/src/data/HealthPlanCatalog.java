@@ -17,7 +17,7 @@ public class HealthPlanCatalog {
 		
 			try {
 			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select nameHP, cantMaxPrescription, idHealthPlan from healthPlan where idHealthPlan = ?"
+					"select nameHP, cantMaxPrescription, idHealthPlan from healthplan where idHealthPlan = ?"
 					);
 			stmt.setInt(1, idHP);
 			rs = stmt.executeQuery();
@@ -54,7 +54,7 @@ public class HealthPlanCatalog {
 		PreparedStatement stmt=null;
 		try {
 			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-					"insert into healthPlan (nameHP, cantMaxPrescription) values (?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+					"insert into healthplan (nameHP, cantMaxPrescription) values (?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, newHP.getnameHP());
 			stmt.setInt(2, newHP.getcantMaxPrescription());
 			stmt.execute();
