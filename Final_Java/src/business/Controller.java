@@ -25,7 +25,7 @@ void countPrescription(int affiliate, int idHealthPlan){
 }
 	
 	
-HealthPlan getHealthPlan (int idHealthPlan){
+public HealthPlan getHealthPlan (int idHealthPlan){
 	HealthPlan hp = null;
 	HealthPlanCatalog hplancatalog = new HealthPlanCatalog();
 	hp=hplancatalog.getHPbyId(idHealthPlan);
@@ -33,14 +33,14 @@ HealthPlan getHealthPlan (int idHealthPlan){
 	
 }	
 
-Professional getProfessional (int regNumber){
+public Professional getProfessional (int regNumber){
 	Professional professional= null;
 	ProfessionalCatalog profcatalog = new ProfessionalCatalog();
 	professional= profcatalog.getProByRegistNumber(regNumber);
 	return professional;
 }
 
-boolean validateUser (int dni){
+public boolean validateUser (int dni){
 	//asks UserCatalog if the dni number belongs to a registered user
 	
 	UsersCatalog user= new UsersCatalog();

@@ -1,8 +1,11 @@
 package aim;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import business.*;
 import entities.*;
 
-@WebServlet("/Addpatient")
+@WebServlet("/addpatient")
 public class Addpatient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,6 +23,7 @@ public class Addpatient extends HttpServlet {
      * Default constructor. 
      */
     public Addpatient() {
+    	super();
         // TODO Auto-generated constructor stub
     }
 
@@ -29,6 +33,8 @@ public class Addpatient extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/addpatient.jsp");
+        dispatcher.forward(request, response);
 	}
 
 	/**
@@ -47,8 +53,17 @@ public class Addpatient extends HttpServlet {
 	    Patient patient = new Patient();
 	    patient.setname(name);
 	    patient.setsurname(surname);
-	    //patient.setbirthdate(birthdate);
+	    SimpleDateFormat formateText = new SimpleDateFormat("dd-MM-yyy");
+	    Date date = null;
+	    try {
+			date=formateText.parse(birthdate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    patient.setbirthdate(date);
 	    patient.setaffiliateNumberHP(Integer.parseInt(affiliateNHP));
+	    
 	   ctrl.addPatient(patient);
 	    
 		
@@ -58,6 +73,8 @@ public class Addpatient extends HttpServlet {
 			//request.getRequestDispatcher(".jsp").forward(request, response);
 		
 			System.out.println("Patient Added!");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/addpatient.jsp");
+	        dispatcher.forward(request, response);
 			response.sendRedirect("addpatient.jsp");
 		}
 	}
