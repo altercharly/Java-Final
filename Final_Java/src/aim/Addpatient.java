@@ -63,7 +63,7 @@ public class Addpatient extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    patient.setbirthdate(date);
+	    patient.setbirthdate(Integer.parseInt(birthdate));
 	    patient.setaffiliateNumberHP(Integer.parseInt(affiliateNHP));
 	    
 	   ctrl.addPatient(patient);

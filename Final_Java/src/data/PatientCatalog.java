@@ -31,7 +31,7 @@ public class PatientCatalog {
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 		    	patient.setaffiliateNumberHP(rs.getInt("affiliateNumberHP"));
-		    	patient.setbirthdate(rs.getDate("birthdate"));
+		    	patient.setbirthdate(rs.getInt("birthdate"));
 				patient.setname(rs.getString("name"));
 				patient.setidPatient(rs.getInt("idPatient"));
 				patient.setsurname(rs.getString("surname"));
@@ -59,14 +59,15 @@ public class PatientCatalog {
     	ResultSet rs=null;
 		PreparedStatement stmt=null;
 		String message = "Patient not added";
+		int idhealthplanex = 1;
 		
 		try {
-			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-					"insert into patient (name, surname, affiliateNumberHP, birthdate,) values (?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt = FactoryConnection.getInstancia().getConn().prepareStatement("insert into patient (name, surname, affiliateNumberHP, birthdate, idhealthplan) values (?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, patient.getname());
 			stmt.setString(2, patient.getsurname());
 			stmt.setInt(3, patient.getaffiliateNumberHP());
-			stmt.setDate(4, (Date) patient.getbirthdate());
+			stmt.setInt(4, patient.getbirthdate());
+			stmt.setInt(5, idhealthplanex);
 			stmt.execute();
 			rs=stmt.getGeneratedKeys();
 			

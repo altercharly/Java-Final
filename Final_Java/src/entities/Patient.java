@@ -7,7 +7,7 @@ public class Patient {
 	int idPatient;
 	String surname;
 	String name;
-	Date birthdate;
+	int birthdate;
 //	int idHP;
 	int affiliateNumberHP;
 	
@@ -24,7 +24,7 @@ public class Patient {
 		this.name = name;
 	}
 	
-	public void setbirthdate (Date birthdate) {
+	public void setbirthdate (int birthdate) {
 		this.birthdate = birthdate;
 	}
 	
@@ -49,7 +49,7 @@ public class Patient {
 		return name;
 	}
 	
-	public Date getbirthdate () {
+	public int getbirthdate () {
 		return birthdate;
 	}
 	
