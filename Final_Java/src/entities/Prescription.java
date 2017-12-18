@@ -57,7 +57,7 @@ public class Prescription {
 		return idItem;
 	}
 	
-	public int getTotal () {
+	public double getTotal () {
 		return total;
 	}
 }

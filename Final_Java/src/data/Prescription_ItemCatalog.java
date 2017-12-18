@@ -100,7 +100,7 @@ public class Prescription_ItemCatalog {
 	                        if(rs !=null && rs.next()){
 	                                Prescription_Item pi = new Prescription_Item();
 	                                pi.setidPrescription(rs.getInt("idprescription"));
-	                                pi.setidItem(rs.getInt("iditem"));
+	                                //pi.setidItem(rs.getInt("iditem"));
 	                                pitems.add(pi);
 
 	                        }

@@ -44,6 +44,8 @@ public class Addpatient extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
+		System.out.println("llegué");
+		
 		business.Controller ctrl = new Controller();
 		String name=request.getParameter("name");
 		String surname = request.getParameter("surname");
