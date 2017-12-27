@@ -19,9 +19,7 @@ public class UsersCatalog {
 		PreparedStatement stmt=null;
 		
 			try {
-			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select * from user where dni = ?"
-					);
+			stmt =FactoryConnection.getInstancia().getConn().prepareStatement("select * from user where dni = ?");
 			stmt.setInt(1, dni);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
@@ -31,7 +29,7 @@ public class UsersCatalog {
 				finduser.setEmail(rs.getString("email"));
 				finduser.setType(rs.getString("type"));
 				finduser.setPassword(rs.getString("password"));
-				finduser.setidUser(rs.getInt("idUser"));
+				finduser.setidUser(rs.getInt("iduser"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

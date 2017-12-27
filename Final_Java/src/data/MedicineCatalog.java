@@ -1,9 +1,10 @@
 package data;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import entities.*;
@@ -62,14 +63,14 @@ public class MedicineCatalog {
 		
 		try {
 			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-					"insert into medicine (name, description, generic) values (?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+					"insert into medicine (name, description, generic) values (?,?,?)");
 			stmt.setString(1, medicine.getname());
 			stmt.setString(2, medicine.getdescription());
 			stmt.setInt(3, medicine.getgeneric().getidDrug());
 					
 			stmt.execute();
 
-			rs=stmt.getGeneratedKeys();
+			rs=stmt.getResultSet();
 			
 			if(rs!=null && rs.next()){
 				String message = "New medicine added";
@@ -99,6 +100,35 @@ public class MedicineCatalog {
         return message;
     }
 
+    public void addMedicine2 (Medicine m){
+    	  FactoryConnection fc = new FactoryConnection();
+
+          // Pasamos el objeto Connection de nuestra clase "ConexionBD" a esta instancia por medio del método getConnection()
+          Connection con = fc.getConn();
+
+          // Crear sentencia SQL para insertar en la base de datos
+          String query = "INSERT INTO medicine (name, description, generic) values (?, ?, ?)";
+
+          try {
+              Statement st = con.createStatement();
+              ResultSet rs = st.executeQuery(query);
+
+              rs.updateString(1, m.getname());
+  			rs.updateString(2, m.getdescription());
+  			((PreparedStatement) rs).setInt(3, m.getgeneric().getidDrug());
+
+              // Indicamos que comience la actualización de la tabla en nuestra base de datos
+              st.executeUpdate(query);
+
+              // Cerramos las conexiones, en orden inverso a su apertura
+              st.close();
+              con.close();
+
+              System.out.println("Llamada agregada con éxito a la base de datos.");
+          } catch (SQLException e) {
+              System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
+          }
+    }
     public ArrayList<Medicine> getMedicineWithSameGeneric (int generic) {
         //TODO: Think a little more about this method, the idea is get all the medicine whit that generic
         ArrayList<Medicine> medicines = new ArrayList<Medicine>();

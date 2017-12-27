@@ -19,7 +19,7 @@ public class FactoryConnection {
 	private Connection conn;
 	private int cantCon;
 	
-	private FactoryConnection(){
+	FactoryConnection(){
 		try {
 			Class.forName(dbDriver);
 			conn=null;
@@ -45,6 +45,7 @@ public class FactoryConnection {
 			if(conn==null || conn.isClosed()){
 				conn = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+"?user="+user+"&password="+pass);
 				cantCon++;
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -9,7 +9,7 @@ import entities.*;
 
 public class Controller {
 	
-	UsersCatalog UsersCat = new UsersCatalog();
+	
 
 
 void countPrescription(int affiliate, int idHealthPlan){
@@ -163,6 +163,13 @@ public void addPatient (Patient patient){
 	
 	PatientCatalog cpatient = new PatientCatalog();
 cpatient.addPatient(patient);
+}
+
+
+public void addMedicine(Medicine medicine) {
+	MedicineCatalog cmedicine = new MedicineCatalog();
+	cmedicine.addMedicine2(medicine);
+	
 }
 
 }
