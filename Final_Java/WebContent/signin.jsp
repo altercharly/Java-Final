@@ -6,10 +6,7 @@
 <title>.:Sign-in:.</title>
 </head>
 <body>
-	<div class='header'>
-		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> UTN Farmacy </p>
-	</div>
+	<%@include file="parts/header.html" %>
 	<div class='body-container'>
 		<form action="login2" method="post">
         	<h2 class="form-signin-heading">Please sign in</h2>
