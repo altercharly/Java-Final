@@ -45,8 +45,10 @@ public boolean validateUser (int dni){
 	
 	UsersCatalog user= new UsersCatalog();
 	if (user.getUser(dni)!=null){
+		System.out.println("Se encontró el usuario!");
 		return true;
 	}else {
+		System.out.println("No se encontró el usuario!");
 		return false;
 	}	
 }
@@ -108,6 +110,15 @@ public GenericDrug getGenericDrug (String gdrug){
 	return genericdrug;
 }
 
+public ArrayList<GenericDrug> getAllGenericDrug (){
+	//gets all generic drugs 
+	ArrayList<GenericDrug> gdrugs = new ArrayList<GenericDrug>();
+	GenericDrugCatalog gdrugcatalog = new GenericDrugCatalog();
+	gdrugs=gdrugcatalog.getgenericDrugs();
+	return gdrugs;
+}
+
+
 public ArrayList<Medicine> getMedicineByDrug (int idgdrug){
 	// returns all the medicine with the same generic drug
 	
@@ -168,7 +179,7 @@ cpatient.addPatient(patient);
 
 public void addMedicine(Medicine medicine) {
 	MedicineCatalog cmedicine = new MedicineCatalog();
-	cmedicine.addMedicine2(medicine);
+	cmedicine.addMedicine(medicine);
 	
 }
 

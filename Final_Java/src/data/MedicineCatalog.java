@@ -1,10 +1,6 @@
 package data;
 
 import java.sql.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import entities.*;
@@ -56,21 +52,19 @@ public class MedicineCatalog {
 
     public String addMedicine (Medicine medicine) {
         //TODO: Insert the new medicine in the DB
-       
+    	            	
     	ResultSet rs=null;
 		PreparedStatement stmt=null;
 		
 		
 		try {
-			stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-					"insert into medicine (name, description, generic) values (?,?,?)");
+			stmt = FactoryConnection.getInstancia().getConn().prepareStatement("insert into medicine (name, description, iddrug) values (?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, medicine.getname());
 			stmt.setString(2, medicine.getdescription());
 			stmt.setInt(3, medicine.getgeneric().getidDrug());
 					
 			stmt.execute();
-
-			rs=stmt.getResultSet();
+			rs=stmt.getGeneratedKeys();
 			
 			if(rs!=null && rs.next()){
 				String message = "New medicine added";

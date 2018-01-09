@@ -17,7 +17,7 @@ public class GenericDrugCatalog {
         ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
         genericDrugs = null;
  		
-		String sql="select * from genericdrug";
+		String sql="select iddrug, drugName from genericdrug";
 		PreparedStatement sentencia=null;
 		ResultSet rs=null;
 		Connection con = FactoryConnection.getInstancia().getConn();
@@ -27,8 +27,8 @@ public class GenericDrugCatalog {
 			rs= sentencia.executeQuery();
 			while (rs !=null && rs.next()){
 				GenericDrug drug = new GenericDrug();
-				drug.setidDrug(rs.getInt("idDrug"));
-				drug.setdrugName(rs.getString("name"));
+				drug.setidDrug(rs.getInt("iddrug"));
+				drug.setdrugName(rs.getString("drugName"));
 				
 				genericDrugs.add(drug);
 			}

@@ -19,7 +19,7 @@ public class UsersCatalog {
 		PreparedStatement stmt=null;
 		
 			try {
-			stmt =FactoryConnection.getInstancia().getConn().prepareStatement("select * from user where dni = ?");
+			stmt =FactoryConnection.getInstancia().getConn().prepareStatement("select dni, name, surname, email, type, password, iduser from user where dni = ?");
 			stmt.setInt(1, dni);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
