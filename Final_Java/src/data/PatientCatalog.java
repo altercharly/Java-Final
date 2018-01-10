@@ -1,11 +1,13 @@
 package data;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entities.GenericDrug;
+import entities.HealthPlan;
 import entities.Medicine;
 import entities.Patient;
 
@@ -15,46 +17,59 @@ public class PatientCatalog {
 		// TODO Auto-generated constructor stub
 	
 	}
-    public Patient getPatient (int aNumber) {
-        //TODO: select from patient where affiliateNumberHP == aNumber
-        Patient patient = new Patient();
-        patient = null;
+   
 
-        ResultSet rs=null;
-		PreparedStatement stmt=null;
-		
-			try {
-			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select affiliateNumberHP, birthdate, idPatient, name, surname from patient where affiliateNumberHP = ?"
-	);
-			stmt.setInt(1, aNumber);
-			rs = stmt.executeQuery();
-			if(rs !=null && rs.next()){
-		    	patient.setaffiliateNumberHP(rs.getInt("affiliateNumberHP"));
-		    	patient.setbirthdate(rs.getInt("birthdate"));
-				patient.setname(rs.getString("name"));
-				patient.setidPatient(rs.getInt("idPatient"));
-				patient.setsurname(rs.getString("surname"));
+    public Patient getPatient(int affiliate){
+    	//gets a patient by affiliate number
+    	Patient p = new Patient();
+		String sql="SELECT idpatient, name, affiliateNumberHP, surname, birthdate FROM patient where affiliateNumberHP = ?";
+		PreparedStatement sentencia=null;
+		ResultSet rs=null;
+		Connection con = FactoryConnection.getInstancia().getConn();
+		try 
+		{			
+			sentencia= con.prepareStatement(sql);
+			sentencia.setInt(1, affiliate);
+			rs= sentencia.executeQuery();
+			while (rs !=null && rs.next()){
+				p.setidPatient(rs.getInt(1));
+				p.setname(rs.getString(2));
+				p.setaffiliateNumberHP(rs.getInt(3));
+				p.setsurname(rs.getString(4));
+				p.setbirthdate(rs.getInt(5));
+			
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
+				
+		}
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		finally
 		{
-			try {
-				if(rs!=null)rs.close();
-				if(stmt!=null) stmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			try
+			{
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				if(sentencia!=null && !sentencia.isClosed())
+				{
+					sentencia.close();
+				}
+				FactoryConnection.getInstancia().releaseConn();
 			}
-			FactoryConnection.getInstancia().releaseConn();
+			catch (SQLException sqle)
+			{
+				sqle.printStackTrace();
+			}
 		}
-        
-        return patient;
-    } 
-
+		return p;
+	}
+    	
+    
+    
     public String addPatient (Patient patient) {
     	ResultSet rs=null;
 		PreparedStatement stmt=null;

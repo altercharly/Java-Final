@@ -1,5 +1,6 @@
 package data;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,45 +9,56 @@ import entities.*;
 
 public class HealthPlanCatalog {
     //TODO: Create the methods to interact whit the DB
-    public HealthPlan getHPbyId (int idHP) {
-        //TODO: select form HealthPlan where id === idHP
-        HealthPlan hp = new HealthPlan();
-        hp = null;
-        ResultSet rs=null;
-		PreparedStatement stmt=null;
-		
-			try {
-			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select nameHP, cantMaxPrescription, idHealthPlan from healthplan where idHealthPlan = ?"
-					);
-			stmt.setInt(1, idHP);
-			rs = stmt.executeQuery();
-			if(rs !=null && rs.next()){
-		    	hp.setnameHP(rs.getString("nameHP"));
-				hp.setcantMaxPrescription(rs.getInt("cantMaxPrescription"));
-				hp.setidHealthPlan(rs.getInt("idHealthPlan"));
-				
-				
+   
+    public HealthPlan getHPbyId (int idHP){
+    	HealthPlan hp = new HealthPlan();
+		String sql="select idHealthPlan, nameHP, cantMaxPrescription FROM healthplan where idhealthPlan = ?";
+		PreparedStatement sentencia=null;
+		ResultSet rs=null;
+		Connection con = FactoryConnection.getInstancia().getConn();
+		try 
+		{			
+			sentencia= con.prepareStatement(sql);
+			sentencia.setInt(1, idHP);
+			rs= sentencia.executeQuery();
+			while (rs !=null && rs.next()){
+				hp.setidHealthPlan(rs.getInt(1));
+				hp.setnameHP(rs.getString(2));
+				hp.setcantMaxPrescription(rs.getInt(3));
+			
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
+				
+		}
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		finally
 		{
-			try {
-				if(rs!=null)rs.close();
-				if(stmt!=null) stmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			try
+			{
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				if(sentencia!=null && !sentencia.isClosed())
+				{
+					sentencia.close();
+				}
+				FactoryConnection.getInstancia().releaseConn();
 			}
-			FactoryConnection.getInstancia().releaseConn();
+			catch (SQLException sqle)
+			{
+				sqle.printStackTrace();
+			}
 		}
-        
-        return hp;
-    }
-
+		return hp;
+	}
+	
+	
+    	
+    
     public String addNewHP (HealthPlan newHP) {
         //TODO: Insert into HealthPlan the newHP
         String message = "New Health Plan added";

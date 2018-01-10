@@ -28,6 +28,7 @@ void countPrescription(int affiliate, int idHealthPlan){
 public HealthPlan getHealthPlan (int idHealthPlan){
 	HealthPlan hp = null;
 	HealthPlanCatalog hplancatalog = new HealthPlanCatalog();
+	
 	hp=hplancatalog.getHPbyId(idHealthPlan);
 	return hp;
 	
@@ -53,15 +54,19 @@ public boolean validateUser (int dni){
 	}	
 }
 boolean validatePatient(int affiliate){
-	//PacientCatalog patientcatalog= new PatientCatalog();
-	//if (patientcatalog.getpatient(affiliate)!=null){
-		//return true;
-	//}else {
-		//return false;
-	//}	
-	
-	
-	return false;}
+	PatientCatalog patientcatalog= new PatientCatalog();
+	if (patientcatalog.getPatient(affiliate)!=null){
+		return true;
+	}else {
+		return false;
+	}	}
+
+public Patient getPatient(int affiliate){
+	Patient p = new Patient();
+	PatientCatalog pcatalog= new PatientCatalog();
+	p=pcatalog.getPatient(affiliate);
+	return p;
+}
 
 boolean validateHealthPlan (int idHP){
 	//asks HealthPlanCatalog if the idHP belongs to a registered HP
@@ -73,7 +78,7 @@ boolean validateHealthPlan (int idHP){
 		return false;
 	}	
 }
-boolean validatecantmaxPrescription(int idHealthPlan, int idPatient){
+public boolean validatecantmaxPrescription(int idHealthPlan, int idPatient){
 	//asks PrescriptionCatalog if the pacient has reached the maximum number of prescriptions per month
 	//according to the maximum number of prescriptions allowed (by the HealthPlan)
 	//validation required before using this method
