@@ -112,13 +112,13 @@ public class GenericDrugCatalog {
 		
 			try {
 			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select * from genericdrug where name = ?"
+					"SELECT * FROM genericdrug WHERE drugName = ?"
 					);
 			stmt.setString(1, drugname);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
-		    	gdrug.setidDrug(rs.getInt("idDrug"));
-				gdrug.setdrugName(rs.getString("name"));
+		    	gdrug.setidDrug(rs.getInt(1));
+				gdrug.setdrugName(rs.getString(2));
 				
 			}
 		} catch (SQLException e) {

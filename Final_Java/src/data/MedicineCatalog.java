@@ -126,9 +126,9 @@ public class MedicineCatalog {
     public ArrayList<Medicine> getMedicineWithSameGeneric (int generic) {
         //TODO: Think a little more about this method, the idea is get all the medicine whit that generic
         ArrayList<Medicine> medicines = new ArrayList<Medicine>();
-        medicines = null;
         
-        String sql="select * from medicine where generic = ?";
+        
+        String sql="SELECT idmedicine, description, iddrug, name FROM medicine WHERE iddrug = ?";
 		PreparedStatement sentencia=null;
 		ResultSet rs=null;
 		
@@ -141,11 +141,12 @@ public class MedicineCatalog {
 			
 			while (rs !=null && rs.next()){
 				Medicine medicine = new Medicine();
-				medicine.setidMedicine(rs.getInt("idMedicine"));
-				medicine.setdescription(rs.getString("description"));
-				medicine.setname(rs.getString("name"));
-				GenericDrug drug = null;
-				drug.setidDrug(rs.getInt("generic"));
+				medicine.setidMedicine(rs.getInt(1));
+				medicine.setdescription(rs.getString(2));
+				medicine.setname(rs.getString(4));
+				System.out.println(medicine.getname());
+				GenericDrug drug = new GenericDrug();
+				drug.setidDrug(rs.getInt(3));
 				medicine.setgenericDrugs(drug);
 				medicines.add(medicine);
 			}
