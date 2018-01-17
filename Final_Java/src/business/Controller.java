@@ -90,7 +90,7 @@ public boolean validatecantmaxPrescription(int idHealthPlan, int idPatient){
 	PrescriptionCatalog prescriptioncatalog = new PrescriptionCatalog();
 	Date today=new Date();
 	
-	if (prescriptioncatalog.countPrescriptionsPatient(idPatient,today)<=cantmaxprescription){
+	if (prescriptioncatalog.countPrescriptionsPatient2(idPatient,today)<=cantmaxprescription){
 	return true;}
 	else {return false;}
 		

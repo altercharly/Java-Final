@@ -14,7 +14,7 @@ public class UsersCatalog {
 	//TODO: create the method to conect with the DB
 	public User getUser (int dni) {
 		//TODO: get the user by id
-		User finduser = null;
+		User finduser = new User();
 		ResultSet rs=null;
 		PreparedStatement stmt=null;
 		

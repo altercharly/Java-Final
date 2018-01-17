@@ -12,12 +12,13 @@ public class GenericDrugCatalog {
 	//TODO: create the method to conect with the DB
 
 
-    public ArrayList<GenericDrug> getgenericDrugs () {
+    @SuppressWarnings("null")
+	public ArrayList<GenericDrug> getgenericDrugs () {
         //TODO: return all the genericdrugs to select one when create a new medicine
         ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
-        genericDrugs = null;
+        
  		
-		String sql="select iddrug, drugName from genericdrug";
+		String sql="SELECT * FROM genericdrug";
 		PreparedStatement sentencia=null;
 		ResultSet rs=null;
 		Connection con = FactoryConnection.getInstancia().getConn();
@@ -25,10 +26,10 @@ public class GenericDrugCatalog {
 		{			
 			sentencia= con.prepareStatement(sql);
 			rs= sentencia.executeQuery();
-			while (rs !=null && rs.next()){
+			while (rs.next()){
 				GenericDrug drug = new GenericDrug();
-				drug.setidDrug(rs.getInt("iddrug"));
-				drug.setdrugName(rs.getString("drugName"));
+				drug.setidDrug(rs.getInt(1));
+				drug.setdrugName(rs.getString(2));
 				
 				genericDrugs.add(drug);
 			}

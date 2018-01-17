@@ -14,15 +14,19 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> UTN Farmacy </p>
 	</div>
+	
 	<div class='menu'>
-		<button class='menu-button'> Venta </button>
-		<button class='menu-button'> Alta de Paciente </button>
-		<button class='menu-button'> Alta de Profesional </button>
-		<button class='menu-button'> Salir </button>
-	</div>
+	<form class="form-menu" action="menu" method="post">
+		
+	<input type='submit' name="sellmedicine1" value='Venta Medicamento' />
+<input type='submit' name="addmedicine" value='Alta Medicamento' />
+<input type='submit' name="addpatient" value='Alta Paciente' />
+	
+	
 	<div class='footer'>
 		<p class='footer-info'> Tel.: 666-001441 </p>
 		<p class='footer-info'> e-mail: farmacy@utn.com.ar </p>
+	  </form>
 	</div>
 </body>
 </html>
