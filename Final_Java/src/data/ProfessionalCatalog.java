@@ -13,18 +13,18 @@ public class ProfessionalCatalog {
     public Professional getProByRegistNumber (int number) {
         //TODO: select from professional where registrationNumber === number
         Professional pro = new Professional(); 
-        pro = null;
+       
         ResultSet rs=null;
 		PreparedStatement stmt=null;
 		
 			try {
 			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select idProffesional, name, surname, registrationNumber from proffesional where registrationNumber = ?"
+					"select idprofessional, name, surname, registrationNumber from professional where registrationNumber = ?"
 					);
 			stmt.setInt(1, number);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
-		    	pro.setidProffesional(rs.getInt("idProffesional"));
+		    	pro.setidProffesional(rs.getInt("idprofessional"));
 				pro.setname(rs.getString("name"));
 				pro.setsurname(rs.getString("surname"));
 				pro.setregistrationNumber(rs.getInt("registrationNumber"));

@@ -78,6 +78,12 @@ boolean validateHealthPlan (int idHP){
 		return false;
 	}	
 }
+public Medicine getMedicineByName(String medicineName){
+	Medicine medicine = new Medicine();
+	MedicineCatalog mcatalog = new MedicineCatalog();
+	medicine=mcatalog.getMedicine(medicineName);
+	return medicine;
+}
 public boolean validatecantmaxPrescription(int idHealthPlan, int idPatient){
 	//asks PrescriptionCatalog if the pacient has reached the maximum number of prescriptions per month
 	//according to the maximum number of prescriptions allowed (by the HealthPlan)

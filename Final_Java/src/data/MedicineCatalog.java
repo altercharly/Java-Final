@@ -10,24 +10,24 @@ public class MedicineCatalog {
     public Medicine getMedicine (String name) {
         //TODO: select from medicine where medicineName === name
         Medicine medicine = new Medicine();
-        medicine = null;
+        
 
         ResultSet rs=null;
 		PreparedStatement stmt=null;
 		
 			try {
 			stmt = 	FactoryConnection.getInstancia().getConn().prepareStatement(
-					"select description, name, generic, idMedicine from medicine where medicineName = ?"
+					"select description, name, iddrug, idmedicine from medicine where name = ?"
 					);
 			stmt.setString(1, name);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 		    	medicine.setdescription(rs.getString("description"));
 				medicine.setname(rs.getString("name"));
-				medicine.setidMedicine(rs.getInt("idMedicine"));
+				medicine.setidMedicine(rs.getInt("idmedicine"));
 				
-				GenericDrug genericDrug =null;
-				genericDrug.setidDrug((rs.getInt("generic")));
+				GenericDrug genericDrug =new GenericDrug();
+				genericDrug.setidDrug((rs.getInt("iddrug")));
 				medicine.setgenericDrugs(genericDrug);
 				
 			}

@@ -16,9 +16,9 @@ public class PresentationCatalog {
 		public ArrayList<Presentation> getPresentationByMedicine (int idmedicine){
 			 //TODO: Think a little more about this method, the idea is get all presentation with the same idmedicine
 	        ArrayList<Presentation> presentations = new ArrayList<Presentation>();
-	        presentations = null;
 	        
-	        String sql="select * from presentation INNER JOIN item on item.idpresentation and presentation.idpresentation where item.idmedicine = ?";
+	        
+	        String sql="SELECT presentation.idpresentation, presentation.description FROM presentation INNER JOIN item on item.idpresentation = presentation.idpresentation where item.idmedicine = ?";
 			PreparedStatement sentencia=null;
 			ResultSet rs=null;
 			
@@ -31,8 +31,9 @@ public class PresentationCatalog {
 				
 				while (rs !=null && rs.next()){
 					Presentation p = new Presentation();
-					p.setIdPresentation(rs.getInt("idPresentation"));
-					p.setDescription(rs.getString("description"));
+					p.setIdPresentation(rs.getInt("presentation.idpresentation"));
+					p.setDescription(rs.getString("presentation.description"));
+					System.out.println(p.getDescription());
 					presentations.add(p);
 				}
 				

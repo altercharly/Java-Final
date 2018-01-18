@@ -11,13 +11,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>UTN Pharmacy</title>
 </head>
 <body>
 
 <div class='header'>
 		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> UTN Pharmacy </p>
+		<p class='header-tittle'> </p>
 	</div>
 	<div class='body-container'>
 		<form class="form-sellmedicine3" action="sellmedicine3" method="post">
