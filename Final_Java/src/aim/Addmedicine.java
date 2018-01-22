@@ -66,8 +66,8 @@ public class Addmedicine extends HttpServlet {
 		 System.out.println(prueba.getdrugName());
 		                
           request.setAttribute("gdrugs", gdrugs);
-          RequestDispatcher despachador = request.getRequestDispatcher("addmedicine.jsp");
-          despachador.forward(request, response);
+          RequestDispatcher despachadorr = request.getRequestDispatcher("menu.jsp");
+          despachadorr.forward(request, response);
 		
 		
 		

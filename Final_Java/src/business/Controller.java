@@ -41,11 +41,12 @@ public Professional getProfessional (int regNumber){
 	return professional;
 }
 
-public boolean validateUser (int dni){
+public boolean validateUser (int dni, String pass){
 	//asks UserCatalog if the dni number belongs to a registered user
-	
+	User us = new User();
 	UsersCatalog user= new UsersCatalog();
-	if (user.getUser(dni)!=null){
+	us=user.getUser(dni, pass);
+	if (us.getDni()==dni && us.getPassword()==pass){
 		System.out.println("Se encontró el usuario!");
 		return true;
 	}else {
@@ -166,14 +167,19 @@ public void updateCantItem (Item item, int cant){
 
 public double calcPriceItem (Item item, int cant){
 	double priceItem;
-	priceItem=item.getprice()*cant;
+	System.out.println("price item: "+ item.getprice());
+	System.out.println("cant: "+ cant);
+	priceItem=(double)cant*(double)item.getprice();
+	System.out.println("Sale price: "+ priceItem);
 	return priceItem;
 }
 
 
-public void setPrescription(Prescription p){
+public int setPrescription(Prescription p){
+	
 	PrescriptionCatalog pcatalog = new PrescriptionCatalog();
-	pcatalog.addPrescription(p);
+	int idPrescription = pcatalog.addPrescription(p);
+	return idPrescription;
 }
 
 public void setPrescription_Item(Prescription_Item pi){
@@ -193,5 +199,16 @@ public void addMedicine(Medicine medicine) {
 	cmedicine.addMedicine(medicine);
 	
 }
+
+
+public ArrayList<HealthPlan> getAllHealthPlan() {
+	ArrayList<HealthPlan> hplans = new ArrayList<HealthPlan>();
+	HealthPlanCatalog hplanc= new HealthPlanCatalog();
+	hplans=hplanc.getAllHealthPlan();
+	return hplans;
+}
+
+
+
 
 }

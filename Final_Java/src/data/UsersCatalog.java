@@ -8,19 +8,21 @@ import java.sql.SQLException;
 
 
 
+
 import entities.*;
 
 public class UsersCatalog {
 	//TODO: create the method to conect with the DB
-	public User getUser (int dni) {
-		//TODO: get the user by id
+	public User getUser (int dni, String pass) {
+		//TODO: get the user by id and pass
 		User finduser = new User();
 		ResultSet rs=null;
 		PreparedStatement stmt=null;
 		
 			try {
-			stmt =FactoryConnection.getInstancia().getConn().prepareStatement("select dni, name, surname, email, type, password, iduser from user where dni = ?");
+			stmt =FactoryConnection.getInstancia().getConn().prepareStatement("select dni, name, surname, email, type, password, iduser from user where dni = ? and password = ?");
 			stmt.setInt(1, dni);
+			stmt.setString(2, pass);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 		    	finduser.setDni(rs.getInt("dni"));

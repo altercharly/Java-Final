@@ -2,6 +2,7 @@ package aim;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,16 +51,20 @@ public class Login2 extends HttpServlet {
 		User u = new User();
 		u.setEmail(user);
 		u.setPassword(pass);
-		Boolean answer = ctrl.validateUser(Integer.parseInt(user));
+		Boolean answer = ctrl.validateUser(Integer.parseInt(user), pass);
 		if (answer != false){
 			
 			HttpSession session = request.getSession(true);
-			System.out.println("Se encontró el usuario!");
+			System.out.println("Usuario y password correctos!");
+			
+	          RequestDispatcher despachadorr = request.getRequestDispatcher("menu.jsp");
+	          despachadorr.forward(request, response);
 			//session.setAttribute("userSession", u);
-			//request.getRequestDispatcher("redirected2.jsp").forward(request, response);
+			
 		} else {
-			System.out.println("No se encontró el usuario ingresado");
-			response.sendRedirect("signin2.html");
+			System.out.println("Usuario y/o password incorrectos");
+			RequestDispatcher despachadorr = request.getRequestDispatcher("sigin.html");
+	          despachadorr.forward(request, response);
 		}
 	}
 

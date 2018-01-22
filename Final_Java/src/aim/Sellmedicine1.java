@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import business.*;
 import entities.*;
@@ -56,21 +57,18 @@ public class Sellmedicine1 extends HttpServlet {
     		
     		boolean answer = ctrl.validatecantmaxPrescription(Integer.parseInt(healthPlanId), patient.getidPatient());
     		if(answer=true){
-    			System.out.println("Patient can buy medicine!");	
+    			System.out.println("Patient can buy medicine!");
+    			//saves the Patient in Session
+    			HttpSession mysession= request.getSession(true);
+          		mysession.setAttribute("patient",patient);
+    			
     			System.out.println("Patient name:" + patient.getname() + "Health Plan name" + hplan.getnameHP());
     		}else{
     			System.out.println("Patient can't buy medicine! Sorry");
     		}
     		
-    		
-    			//HttpSession session = request.getSession(true);
-    			//session.setAttribute("userSession", patient);
-    			//request.getRequestDispatcher(".jsp").forward(request, response);
-    		
-    			
-    			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/addpatient.jsp");
-    	        dispatcher.forward(request, response);
-    			response.sendRedirect("sellmedicine1.jsp");
+    		 RequestDispatcher despachador = request.getRequestDispatcher("sellmedicine2.jsp");
+	          despachador.forward(request, response);
     		}
     	}
 

@@ -36,4 +36,7 @@ public class Prescription_Item {
 	public void setCantItem(int cantItem) {
 		this.cantItem = cantItem;
 	}
+
+
+	
 }

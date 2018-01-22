@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import entities.*;
 
@@ -55,9 +56,6 @@ public class HealthPlanCatalog {
 		}
 		return hp;
 	}
-	
-	
-    	
     
     public String addNewHP (HealthPlan newHP) {
         //TODO: Insert into HealthPlan the newHP
@@ -98,4 +96,56 @@ public class HealthPlanCatalog {
         return message;
         
     }
+
+    public ArrayList<HealthPlan> getAllHealthPlan () {
+        //TODO: return all the health plans to select one
+        ArrayList<HealthPlan> hplans = new ArrayList<HealthPlan>();
+        
+ 		
+		String sql="SELECT * FROM healthplan";
+		PreparedStatement sentencia=null;
+		ResultSet rs=null;
+		Connection con = FactoryConnection.getInstancia().getConn();
+		try 
+		{			
+			sentencia= con.prepareStatement(sql);
+			rs= sentencia.executeQuery();
+			while (rs.next()){
+				HealthPlan hp = new HealthPlan();
+				hp.setidHealthPlan((rs.getInt(1)));
+				hp.setnameHP((rs.getString(2)));
+				hp.setcantMaxPrescription(rs.getInt(3));
+				
+				hplans.add(hp);
+			}
+			
+				
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				if(sentencia!=null && !sentencia.isClosed())
+				{
+					sentencia.close();
+				}
+				FactoryConnection.getInstancia().releaseConn();
+			}
+			catch (SQLException sqle)
+			{
+				sqle.printStackTrace();
+			}
+		}
+        return hplans;
+    }
+
+
 }

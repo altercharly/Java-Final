@@ -51,7 +51,8 @@ public class Addpatient extends HttpServlet {
 		String surname = request.getParameter("surname");
 		String affiliateNHP = request.getParameter("affiliateNHP");
 	    String birthdate = request.getParameter("birthdate");
-		
+	    String healthPlanId = request.getParameter("healthPlanId");
+	    
 	    Patient patient = new Patient();
 	    patient.setname(name);
 	    patient.setsurname(surname);
@@ -65,6 +66,8 @@ public class Addpatient extends HttpServlet {
 		}
 	    patient.setbirthdate(Integer.parseInt(birthdate));
 	    patient.setaffiliateNumberHP(Integer.parseInt(affiliateNHP));
+	    patient.setHealthPlanId(Integer.parseInt(healthPlanId));
+	    
 	    
 	   ctrl.addPatient(patient);
 	    
@@ -75,9 +78,8 @@ public class Addpatient extends HttpServlet {
 			//request.getRequestDispatcher(".jsp").forward(request, response);
 		
 			System.out.println("Patient Added!");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/addpatient.jsp");
-	        dispatcher.forward(request, response);
-			response.sendRedirect("addpatient.jsp");
+			RequestDispatcher despachadorr = request.getRequestDispatcher("menu.jsp");
+	          despachadorr.forward(request, response);
 		}
 	}
 

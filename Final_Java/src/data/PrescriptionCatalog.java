@@ -128,27 +128,32 @@ public class PrescriptionCatalog {
 		return prescriptions;
 	}
 
-	public String addPrescription (Prescription prescription) {
+	public int addPrescription (Prescription prescription) {
         //TODO: Insert the new prescription in the DB
 
        ResultSet rs=null;
               PreparedStatement stmt=null;
-              String message = "New prescription not added";
+              Integer idPrescription = new Integer(11);
+              
+      
+  	        java.sql.Date sqlDate = new java.sql.Date(prescription.getprescriptionDate().getTime());
 
               try {
                       stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-                    		  "insert into prescription (idPrescription, prescriptionDate, idpatient, idproffesional,total) values (?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
-                      stmt.setInt(1, prescription.getidPrescription());
-                      stmt.setDate(2, (java.sql.Date) prescription.getprescriptionDate());
-                      stmt.setInt(3, prescription.getidpatient());
-                      stmt.setInt(4, prescription.getidproffesional());
-                      stmt.setDouble(5, prescription.getTotal());
+                    		  "insert into prescription (prescriptionDate, idpatient, idproffesional,total) values (?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+                      
+                      stmt.setDate(1, sqlDate);
+                      stmt.setInt(2, prescription.getidpatient());
+                      stmt.setInt(3, prescription.getidproffesional());
+                      stmt.setDouble(4, prescription.getTotal());
                       stmt.execute();
 
                       rs=stmt.getGeneratedKeys();
 
                       if(rs!=null && rs.next()){
-                               message = "New prescription added";
+                    	  java.math.BigDecimal idColVar = rs.getBigDecimal(1);     
+                    	  idPrescription = idColVar.intValueExact();
+                    	  System.out.println("Id prescription: " + idPrescription);
                       }
 
               } catch (SQLException e) {
@@ -160,7 +165,7 @@ public class PrescriptionCatalog {
                       try {
                               if(rs!=null ) rs.close();
                               if(stmt != null) stmt.close();
-                              message = "New prescription not added";
+                              
                       } catch (SQLException e) {
                               // TODO Auto-generated catch block
                               e.printStackTrace();
@@ -172,7 +177,7 @@ public class PrescriptionCatalog {
 
        
 
-        return message;
+        return idPrescription;
     }
 
 

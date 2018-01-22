@@ -1,7 +1,12 @@
 <%@page import="entities.*"%>
 <%@page import="business.*"%>
 <%@page import="aim.*"%>
-
+<%@page import="java.util.*"%> 
+<% 
+ ArrayList<HealthPlan> lista= new ArrayList<HealthPlan>();
+ lista=(ArrayList<HealthPlan>)request.getAttribute("hplans");
+ 
+%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -33,6 +38,31 @@
         	<input name="birthdate" id="inputBirthdate" class="form-control" placeholder="" required="" autofocus=""> 
         	<br>
         	<br>
+        	
+        	 <h1>Select Health Plan ID: </h1>        
+            <table border="1">
+                <thead>
+                <th>ID Health Plan</th>
+                <th>Name</th>
+             
+                </thead>
+                <tbody>
+               <%
+               for( HealthPlan hp : lista) {%>
+                  
+                <tr>
+                   <td><% out.println(hp.getidHealthPlan()); %></td>
+                   <td><% out.println(hp.getnameHP());  %></td>
+                </tr>
+               <% } %>                
+                </tbody>           
+            </table>   
+        	<br>
+        	<br>   
+        	<label for="inputHealthPlan" class="sr-only"> ID Health Plan :</label>
+        	<input name="healthPlanId" id="inputHealthPlanId" class="form-control" placeholder="" required="" autofocus=""> 
+        	<br>
+        	<br>  
         	<label for="inputAffiliateNHP" class="sr-only">Affiliate Number Health Plan :</label>
         	<input name="affiliateNHP" id="inputAffiliateNHP" class="form-control" placeholder="" required="" autofocus=""> 
         	<br>

@@ -17,21 +17,21 @@ import javax.servlet.http.HttpSession;
 import business.*;
 import entities.*;
 
-@WebServlet("/sellmedicine4")
-public class Sellmedicine4 extends HttpServlet {
+@WebServlet("/sellmedicine5")
+public class Sellmedicine5 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Sellmedicine4() {
+    public Sellmedicine5() {
     	super();}
     
         // TODO Auto-generated constructor stub
     	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     		// TODO Auto-generated method stub
     		response.getWriter().append("Served at: ").append(request.getContextPath());
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp");
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/sellmedicine5.jsp");
             dispatcher.forward(request, response);
     	}
 
@@ -46,27 +46,23 @@ public class Sellmedicine4 extends HttpServlet {
     		Medicine medicine= (Medicine) mysession.getAttribute("medicine");	
     		int idMedicine= medicine.getidMedicine();
     		
-    		String idPresentation=request.getParameter("idPresentation");
-    		int idpres = Integer.parseInt(idPresentation);
-    		business.Controller ctrl = new Controller();
-    		Item item = new Item();
-    		item=ctrl.getItem(idMedicine, idpres);
+    		String cantItem=request.getParameter("cantItem");
     		
-    		System.out.println("Item selected!");
-    		  
+    		int cantItems = Integer.parseInt(cantItem);
+    		
     		HttpSession mysession2= request.getSession(true);
-      		mysession2.setAttribute("itemsel",item);
-    		String regNumberP=request.getParameter("regNumberP");
-    	Professional prof = new Professional();
-    	int regNumber = Integer.parseInt(regNumberP);
-    	prof=ctrl.getProfessional(regNumber);
-    	System.out.println("Professional selected!: "+prof.getsurname());
-    	
-    		HttpSession mysession3= request.getSession(true);
-      		mysession3.setAttribute("professional",prof);
+      		mysession2.setAttribute("cantItems",cantItems);
+    		System.out.println("Items registered: " + cantItems);
     		
-    		 request.setAttribute("item", item);
-	          RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine5.jsp");
+    		HttpSession mysession3= (HttpSession) request.getSession();
+    		Item item= (Item) mysession3.getAttribute("itemsel");
+    		
+    		
+    	business.Controller ctrl = new Controller();
+    	double calcPrice = (double)ctrl.calcPriceItem(item, cantItems);
+    		 
+    		 request.setAttribute("calcPrice", calcPrice);
+	          RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine6.jsp");
 	          despachadorr.forward(request, response);
     		
     

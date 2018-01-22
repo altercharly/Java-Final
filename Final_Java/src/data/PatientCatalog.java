@@ -74,7 +74,7 @@ public class PatientCatalog {
     	ResultSet rs=null;
 		PreparedStatement stmt=null;
 		String message = "Patient not added";
-		int idhealthplanex = 1;
+		int idhealthplanex = patient.getHealthPlanId();
 		
 		try {
 			stmt = FactoryConnection.getInstancia().getConn().prepareStatement("insert into patient (name, surname, affiliateNumberHP, birthdate, idhealthplan) values (?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);

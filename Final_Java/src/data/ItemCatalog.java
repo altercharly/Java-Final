@@ -72,20 +72,19 @@ public class ItemCatalog {
 	
 	try {
 		stmt = FactoryConnection.getInstancia().getConn().prepareStatement(
-				"Update item set idmedicine=?, idpresentation=?, price=?, cantStock=?, where idItem=?");
+				"UPDATE item SET idmedicine=?, idpresentation=?, price=?, cantStock=? WHERE iditem = ?");
 		
-		stmt.setInt(1, item.getidItem());
-		stmt.setInt(2, item.getIdmedicine());
-		stmt.setDouble(3, item.getprice());
+		stmt.setInt(1, item.getIdmedicine());
+		stmt.setInt(2, item.getIdpresentation());
+		stmt.setDouble(3, (double)item.getprice());
 		stmt.setInt(4,item.getcantStock());
-			
-		stmt.execute();
-
-		//rs=stmt.getGeneratedKeys();
+		stmt.setInt(5,item.getidItem());
 		
-		if(rs!=null && rs.next()){
-		//	pacient.setId(rs.getInt(1));
-		}
+		stmt.executeUpdate();
+
+		
+		System.out.println("Quantity updated!");
+		
 		
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block

@@ -8,7 +8,7 @@ public class Patient {
 	String surname;
 	String name;
 	int birthdate;
-//	int idHP;
+    int idHP;
 	int affiliateNumberHP;
 	
 	//set
@@ -28,15 +28,11 @@ public class Patient {
 		this.birthdate = birthdate;
 	}
 	
-/*	public void setidHP (int idHP) {
-		this.idHP = idHP;
-	}*/
-	
 	public void setaffiliateNumberHP (int number) {
 		this.affiliateNumberHP = number;
 	}
 	
-	//get
+
 	public int getidPatient () {
 		return idPatient;
 	}
@@ -53,11 +49,16 @@ public class Patient {
 		return birthdate;
 	}
 	
-/*	public int getidHP () {
+	public int getHealthPlanId () {
 		return idHP;
-	}*/
+	}
 	
 	public int getaffiliateNumberHP () {
 		return affiliateNumberHP;
+	}
+
+	public void setHealthPlanId(int idHP) {
+		this.idHP = idHP;
+		
 	}
 }

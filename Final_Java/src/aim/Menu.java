@@ -68,6 +68,14 @@ public class Menu extends HttpServlet {
 		
 	} else if (request.getParameter("addpatient") != null) {
 	          //agrega paciente
+		
+		business.Controller ctrl = new Controller();
+		ArrayList<HealthPlan> hplans = new ArrayList<HealthPlan>();
+		
+		hplans=ctrl.getAllHealthPlan();
+		                
+          request.setAttribute("hplans", hplans);
+		
 		RequestDispatcher despachador = request.getRequestDispatcher("addpatient.jsp");
         despachador.forward(request, response);
 	}
