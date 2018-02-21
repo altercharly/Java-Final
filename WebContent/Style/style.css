@@ -1,83 +1,111 @@
 * {
-	text-align: center;
-	background-color: GhostWhite;
-	font-size: 46px;
+	/* background properties */
+	background-color: #F8F8FF;
+	/* text properties */
+	color: #000;
 	font-family: cursive;
-	color: black;
+	font-size: 46px;
+	text-align: center;
 }
 
 .header {
-	background-color: Aquamarine;
-	width: 100%;
+	/* box properties */
 	height: 100%;
-	text-align: left;
+	width: 100%;
+	/* box borders */
 	border-radius: 5px;
-	box-shadow: 5px 5px 4px darkcyan;
+	box-shadow: 5px 5px 4px #008B8B;
+	/* background properties */
+	background-color: #7FFFD4;
+	/* text properties */
+	text-align: left;
 }
 
 .logo {
-	background-color: Aquamarine;
+	/* box properties */
 	display: inline-block;
-	text-align: left;
-	margin-top: 0.5%;
-	margin-left: 1.5%;
-	width: 4%;
 	height: 4%;
+	width: 4%;
+	margin-left: 1.5%;
+	margin-top: 0.5%;
+	/* background properties */
+	background-color: #7FFFD4;
+	/* text properties */
+	text-align: left;
 }
 
-.header-tittle {
-	background-color: Aquamarine;
+.header-tittle { /* TODO: CORREGIR TITTLE POR TITLE */
+	/* box properties */
 	display: inline-block;
-	margin-top: 0.5%;
-	margin-bottom: 0.5%;
-	margin-left: 1.5%;
-	text-align: center;
-	color: black;	
+	margin: 0.5% 0 0.5% 1.5%;
+	/* background properties */
+	background-color: #7FFFD4;
+	/* text properties */
+	color: #000;
 	font-family: times;
+	text-align: center;
 }
 
 .body-container {
-	text-align:center;
+	/* box properties */
 	margin: inherit;
+	/* text properties */
+	text-align:center;
 }
 
 .form-signin {
-	background-color: white;
-	margin: 6% 10% 6%;
+	/* box properties */
 	display: inline-block;
-	text-align: center;
+	height: 15%;
 	width: 35%;
-	height:15%;
-	padding:1.5%;
-	border: 2px solid gray;
-    border-radius: 5px;
+	margin: 6% 10%;
+	padding: 1.5%;
+	/* box borders */
+	border: 2px solid #777777;
+	border-radius: 5px;
+	/* background properties */
+	background-color: #FFF;
+	/* text properties */
+	text-align: center;
 }
 
 .form-signin-heading {
-	background-color: white;
-	color: green;
-	text-decoration: underline;
+	/* box properties */
+	margin-top: 0.5%;
 	vertical-align: top;
-	margin-top: 0.5%;	
+	/* background properties */
+	background-color: #FFF;
+	/* text properties */
+	color: #00FF00;
+	text-decoration: underline;
 }
 
 .form-control {
-	text-align: center;
-	background-color: lightgrey;
+	/* box properties */
 	width: 95%;
+	/* background properties */
+	background-color: #D3D3D3;
+	/* text properties */
+	text-align: center;
 }
 
 .sr-only {
-	background-color: white;
+	/* background properties */
+	background-color: #FFF;
 }
 
 .btn {
+	/* box properties */
 	width: 70%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 3.5% 0%;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+	padding: 10px 20px;
+	margin: 3.5% 0%;
+	/* box borders */
+	border: none;
+	border-radius: 4px;
+	/* background properties */
+	background-color: #4CAF50;
+	/* text properties */
+	color: #FFF;
+	/* others */
+	cursor: pointer;
 }
