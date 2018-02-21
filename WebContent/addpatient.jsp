@@ -43,7 +43,7 @@
 					<%
 						for( HealthPlan hp : lista) {
 					%>
-                  			<tr>
+							<tr>
 								<td><% out.println(hp.getidHealthPlan()); %></td>
 								<td><% out.println(hp.getnameHP());  %></td>
 							</tr>
