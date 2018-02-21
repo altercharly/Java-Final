@@ -18,14 +18,14 @@
 	</div>
 	<div class='body-container'>
 		<form class="form-addmedicine" action="addmedicine" method="post">
-        	<h2 class="form-addmedicine-heading">Please register new medicine</h2>
-			<h1>Generic Drugs Registered: </h1>        
-            <table border="1">
+			<h2 class="form-addmedicine-heading">Please register new medicine</h2>
+			<h1>Generic Drugs Registered: </h1>
+			<table border="1">
 				<thead>
 					<th>ID Drug</th>
 					<th>Name</th>
-                </thead>
-                <tbody>
+				</thead>
+				<tbody>
 					<%
 						for( GenericDrug gen : lista) {
 					%>
