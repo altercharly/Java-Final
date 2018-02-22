@@ -2,22 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
-	<link href="Style/style.css" rel="stylesheet">
-	<title>.:Sign-in:.</title>
+	<title>.:Login:.</title>
 </head>
 <body>
-	<div class='header'>
-		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> UTN Pharmacy </p>
-	</div>
+	<%@include file="parts/header.html" %>
 	<div class='body-container'>
-		<form action="login2" method="post">
-			<h2 class="form-signin-heading">Please sign in</h2>
+		<form action="login" method="post">
+			<h2 class="form-signin-heading">Please login</h2>
 			<label for="inputUser" class="sr-only">User :</label>
 			<input name="user" id="inputUser" class="form-control" placeholder="" required="" autofocus="">
 			<label for="inputPassword" class="sr-only">Password :</label>
 			<input name="pass" id="inputPassword" class="form-control" placeholder="" required="" type="password">     
-			<button class="btn" type="submit">Sign in</button>
+			<button class="btn" type="submit">Login</button>
 		</form>
 	</div>
 </body>

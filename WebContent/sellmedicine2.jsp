@@ -16,7 +16,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> UTN Pharmacy </p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine1" action="sellmedicine2" method="post">
 			<h2 class="form-sellmedicine2-heading">Please select Generic Drug: </h2>
 			<label for="inputGenericDrug" class="sr-only">Generic drug name: </label>

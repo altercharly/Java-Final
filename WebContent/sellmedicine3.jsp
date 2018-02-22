@@ -16,7 +16,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> </p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine3" action="sellmedicine3" method="post">
 			<h2 class="form-sellmedicine3-heading">Please select Medicine by Generic Drug: </h2>
 			<h1>Medicine Registered: </h1>

@@ -16,14 +16,14 @@ import business.*;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/login2")
-public class Login2 extends HttpServlet {
+@WebServlet("/login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Login2() {
+    public Login() {
         // TODO Auto-generated constructor stub
     }
 

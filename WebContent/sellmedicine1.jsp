@@ -11,7 +11,7 @@
 		<p class='header-tittle'> UTN Pharmacy </p>
 		<h2 class="form-addmedicine-heading">Sell Medicine by prescription only</h2>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine1" action="sellmedicine1" method="post">
 			<h2 class="form-sellmedicine1-heading">Please enter pacient data: </h2>
 			<label for="inputHealthPlanId" class="sr-only">Health Plan ID: </label>

@@ -16,7 +16,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> </p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine4" action="sellmedicine4" method="post">
 			<h2 class="form-sellmedicine4-heading">Please select Medicine Presentation: </h2>
 			<h1>Medicine Presentation Registered: </h1>

@@ -18,7 +18,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> UTN Pharmacy </p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-addpatient" action="addpatient" method="post">
 			<h2 class="form-addpatient-heading">Please register new patient</h2>
 			<label for="inputSurname" class="sr-only">Surname :</label>

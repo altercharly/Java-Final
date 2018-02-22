@@ -1,0 +1,22 @@
+.presentation {
+	/* box properties */
+	width: 100%;
+	height: 60vh;
+	padding-top: 2vh;
+	/* background properties */
+	background: url(../images/pharmacy-background.jpg) no-repeat;
+}
+
+.see-medicines {
+	/* box properties */
+	display: inline-block;
+	margin-top: 3vh;
+	padding: 3vh 3vw;
+	/* box borders */
+	border-radius: 3px;
+	/* background properties */
+	background-color: #009688;
+	/* text properties */
+	color: #FFF;
+	text-decoration: none;
+}

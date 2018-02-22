@@ -12,7 +12,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> UTN Pharmacy</p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine7" action="sellmedicine7" method="post">
 			<h2 class="form-sellmedicine7-heading">Sale registered succesfully </h2>
 			<% out.println("Please select next action: "); %>

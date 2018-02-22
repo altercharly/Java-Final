@@ -3,6 +3,7 @@
 
 ### Eclipse ###
 
+build/
 .metadata
 bin/
 tmp/

@@ -9,16 +9,15 @@
 	<title>.:Menu:.</title>
 </head>
 <body>
-	<div class='header'>
-		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> UTN Farmacy </p>
-	</div>
-	<div class='menu'>
-		<form class="form-menu" action="menu" method="post">
-			<input type='submit' name="sellmedicine1" value='Venta Medicamento' />
-			<input type='submit' name="addmedicine" value='Alta Medicamento' />
-			<input type='submit' name="addpatient" value='Alta Paciente' />
-		</form>
+	<%@include file="parts/header.html" %>
+	<div class="content">
+		<div class='menu'>
+			<form class="form-menu" action="menu" method="post">
+				<input type='submit' name="sellmedicine1" value='Venta Medicamento' />
+				<input type='submit' name="addmedicine" value='Alta Medicamento' />
+				<input type='submit' name="addpatient" value='Alta Paciente' />
+			</form>
+		</div>
 	</div>
 	<div class='footer'>
 		<p class='footer-info'> Tel.: 666-001441 </p>

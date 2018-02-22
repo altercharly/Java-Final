@@ -23,7 +23,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> Detail </p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine5" action="sellmedicine5" method="post">
 			<h2 class="form-sellmedicine5-heading">Please choose quantity of items: </h2>
 			<% out.println("Professional Name: "+prof.getsurname()+", "+prof.getname()); %>

@@ -27,7 +27,7 @@
 		<!-- img class='logo' src=" " -->
 		<p class='header-tittle'> Detail </p>
 	</div>
-	<div class='body-container'>
+	<div class='content'>
 		<form class="form-sellmedicine6" action="sellmedicine6" method="post">
 			<h2 class="form-sellmedicine6-heading">Please confirm the sale: </h2>
 			<% out.println("Professional Name: "+prof.getsurname()+", "+prof.getname()); %>
