@@ -5,6 +5,8 @@
 	padding-top: 2vh;
 	/* background properties */
 	background: url(../images/pharmacy-background.jpg) no-repeat;
+	/* text properties */
+	text-align: center;
 }
 
 .see-medicines {

@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>.:Login:.</title>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link href="Style/login.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="parts/header.html" %>
-	<div class='body-container'>
-		<form action="login" method="post">
-			<h2 class="form-signin-heading">Please login</h2>
-			<label for="inputUser" class="sr-only">User :</label>
-			<input name="user" id="inputUser" class="form-control" placeholder="" required="" autofocus="">
-			<label for="inputPassword" class="sr-only">Password :</label>
-			<input name="pass" id="inputPassword" class="form-control" placeholder="" required="" type="password">     
-			<button class="btn" type="submit">Login</button>
+	<div class="content">
+		<form action="login" method="post" class="login-form">
+			<h2>Please login</h2>
+			<label for="user">
+				User:
+				<input name="user" required autofocus>
+			</label>
+			<label for="password">
+				Password:
+				<input name="password" type="password" required>
+			</label>     
+			<button type="submit" class="login-submit">Login</button>
 		</form>
 	</div>
+	<%@include file="parts/footer.html" %>
 </body>
 </html>

@@ -48,7 +48,7 @@
 			<input name="name" id="inputName" class="form-control" placeholder="" required="" autofocus=""> 
 			<br>
 			<br>
-			<label for="inputDescription" class="sr-only">Drescription :</label>
+			<label for="inputDescription" class="sr-only">Description :</label>
 			<input name="description" id="inputDescription" class="form-control" placeholder="" required="" autofocus=""> 
 			<br>
 			<br>

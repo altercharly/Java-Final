@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 		
 		
 		String user=request.getParameter("user");
-		String pass=request.getParameter("pass");
+		String pass=request.getParameter("password");
 		User u = new User();
 		u.setEmail(user);
 		u.setPassword(pass);

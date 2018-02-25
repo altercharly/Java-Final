@@ -1,0 +1,31 @@
+.login-form {
+	/* box properties */
+	display: flex;
+	flex-direction: column;
+	width: 60vw;
+	margin: 18vh auto 0;
+	padding: 4vh 4vw;
+	/* box borders */
+	border-radius: 8px;
+	/* background properties */
+	background-color: #009688;
+	/* text properties */
+	color: #FFF;
+}
+
+@media only screen and (max-width: 767px) {
+	.login-form {
+		width: 90%;
+	}
+}
+
+label {
+	/* box properties */
+	display: flex;
+	flex-direction: column;
+	margin: 2vh 2vw;
+}
+
+.login-submit {
+	margin: 2vh 2vw;
+}
