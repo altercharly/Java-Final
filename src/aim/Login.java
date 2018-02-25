@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
 			
 		} else {
 			System.out.println("Usuario y/o password incorrectos");
-			RequestDispatcher despachadorr = request.getRequestDispatcher("sigin.html");
+			RequestDispatcher despachadorr = request.getRequestDispatcher("login.jsp");
 	          despachadorr.forward(request, response);
 		}
 	}
