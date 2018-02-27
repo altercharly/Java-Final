@@ -3,6 +3,7 @@ package aim;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -32,9 +33,12 @@ public class Addpatient extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/addpatient.jsp");
-        dispatcher.forward(request, response);
+		Controller controller = new Controller();
+		ArrayList<HealthPlan> healthPlans = new ArrayList<HealthPlan>();
+		healthPlans = controller.getAllHealthPlan();
+		request.setAttribute("hplans", healthPlans);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("addpatient.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -44,7 +48,7 @@ public class Addpatient extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		System.out.println("llegué");
+		System.out.println("lleguï¿½");
 		
 		business.Controller ctrl = new Controller();
 		String name=request.getParameter("name");

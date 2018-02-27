@@ -1,7 +1,7 @@
 .presentation {
 	/* box properties */
 	width: 100%;
-	height: 60vh;
+	min-height: 40vh;
 	padding-top: 2vh;
 	/* background properties */
 	background: url(../images/pharmacy-background.jpg) no-repeat;

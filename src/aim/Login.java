@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 	/**
@@ -40,32 +40,23 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		//response.getWriter().append(email).append(": ").append(pass);
+		Controller controller = new Controller();
+
+		String userInput = request.getParameter("user");
+		String passwordInput = request.getParameter("password");
 		
-		Controller ctrl = new Controller();
-		
-		
-		String user=request.getParameter("user");
-		String pass=request.getParameter("password");
-		User u = new User();
-		u.setEmail(user);
-		u.setPassword(pass);
-		Boolean answer = ctrl.validateUser(Integer.parseInt(user), pass);
-		if (answer != false){
+		if (controller.validateUser(Integer.parseInt(userInput), passwordInput)) {
+			User user = new User();
+			user.setEmail(userInput);
+			user.setPassword(passwordInput);
 			
 			HttpSession session = request.getSession(true);
-			System.out.println("Usuario y password correctos!");
-			
-	          RequestDispatcher despachadorr = request.getRequestDispatcher("menu.jsp");
-	          despachadorr.forward(request, response);
-			//session.setAttribute("userSession", u);
-			
+			session.setAttribute("userSession", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+			dispatcher.forward(request, response);
 		} else {
-			System.out.println("Usuario y/o password incorrectos");
-			RequestDispatcher despachadorr = request.getRequestDispatcher("login.jsp");
-	          despachadorr.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
-
 }

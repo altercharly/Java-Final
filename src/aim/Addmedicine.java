@@ -1,10 +1,7 @@
 package aim;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,18 +31,12 @@ public class Addmedicine extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ArrayList<GenericDrug> gdrugs = new ArrayList<GenericDrug>();
-		Controller ctrl = new Controller();
-		gdrugs=ctrl.getAllGenericDrug();
-		GenericDrug prueba = new GenericDrug();
-		 prueba = (GenericDrug)gdrugs.get(0);
-		 System.out.println(prueba.getdrugName());
-		                
-          request.setAttribute("gdrugs", gdrugs);
-          RequestDispatcher despachador = request.getRequestDispatcher("addmedicine.jsp");
-          despachador.forward(request, response);
-	
-          
+		ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
+		Controller controller = new Controller();
+		genericDrugs = controller.getAllGenericDrug();
+		request.setAttribute("gdrugs", genericDrugs);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("addmedicine.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -55,7 +46,7 @@ public class Addmedicine extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		System.out.println("llegué");
+		System.out.println("lleguï¿½");
 		
 		ArrayList<GenericDrug> gdrugs = new ArrayList<GenericDrug>();
 		Controller ctrl = new Controller();

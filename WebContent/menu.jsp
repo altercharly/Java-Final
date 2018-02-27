@@ -1,27 +1,22 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="business.*"%>
-<%@page import="entities.*"%>
-<%@page import="java.util.ArrayList"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>.:Menu:.</title>
+	<meta charset="UTF-8">
+	<title>Menu</title>
+	<link href="Style/menu.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="parts/header.html" %>
 	<div class="content">
-		<div class='menu'>
-			<form class="form-menu" action="menu" method="post">
-				<input type='submit' name="sellmedicine1" value='Venta Medicamento' />
-				<input type='submit' name="addmedicine" value='Alta Medicamento' />
-				<input type='submit' name="addpatient" value='Alta Paciente' />
-			</form>
+		<div class="menu">
+			<h1>Please, select an option:</h1>
+			<div class="options">
+				<a href="sellmedicine1">Sell medicine</a>
+				<a href="addmedicine">New medicine</a>
+				<a href="addpatient">New patient</a>
+			</div>
 		</div>
 	</div>
-	<div class='footer'>
-		<p class='footer-info'> Tel.: 666-001441 </p>
-		<p class='footer-info'> e-mail: farmacy@utn.com.ar </p>
-	</div>
+	<%@include file="parts/footer.html" %>
 </body>
 </html>
