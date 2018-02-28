@@ -30,19 +30,14 @@ public class Sellmedicine4 extends HttpServlet {
         // TODO Auto-generated constructor stub
     	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     		// TODO Auto-generated method stub
-    		response.getWriter().append("Served at: ").append(request.getContextPath());
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp");
-            dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp");
+		dispatcher.forward(request, response);
     	}
 
     	
     	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     		// TODO Auto-generated method stub
-    		//doGet(request, response);
-    		
-    		System.out.println("llegué");
-    		HttpSession mysession= (HttpSession) request.getSession();
-    		 
+    		HttpSession mysession = (HttpSession) request.getSession();
     		Medicine medicine= (Medicine) mysession.getAttribute("medicine");	
     		int idMedicine= medicine.getidMedicine();
     		
@@ -53,22 +48,16 @@ public class Sellmedicine4 extends HttpServlet {
     		item=ctrl.getItem(idMedicine, idpres);
     		
     		System.out.println("Item selected!");
-    		  
-    		HttpSession mysession2= request.getSession(true);
-      		mysession2.setAttribute("itemsel",item);
+      		mysession.setAttribute("itemsel",item);
     		String regNumberP=request.getParameter("regNumberP");
-    	Professional prof = new Professional();
-    	int regNumber = Integer.parseInt(regNumberP);
-    	prof=ctrl.getProfessional(regNumber);
-    	System.out.println("Professional selected!: "+prof.getsurname());
-    	
-    		HttpSession mysession3= request.getSession(true);
-      		mysession3.setAttribute("professional",prof);
-    		
-    		 request.setAttribute("item", item);
-	          RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine5.jsp");
-	          despachadorr.forward(request, response);
-    		
-    
-    		}
-    	}
+    		Professional prof = new Professional();
+    		int regNumber = Integer.parseInt(regNumberP);
+    		prof=ctrl.getProfessional(regNumber);
+    		System.out.println("Professional selected!: "+prof.getsurname());
+      		mysession.setAttribute("professional",prof);
+
+		request.setAttribute("item", item);
+		RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine5.jsp");
+		despachadorr.forward(request, response);
+	}
+}
