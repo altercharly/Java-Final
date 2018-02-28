@@ -17,37 +17,19 @@ import entities.*;
 public class Addmedicine extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
     public Addmedicine() {
     	super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
 		Controller controller = new Controller();
+		ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
 		genericDrugs = controller.getAllGenericDrug();
 		request.setAttribute("gdrugs", genericDrugs);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("addmedicine.jsp");
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/addmedicine.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		System.out.println("llegu�");
-		
 		ArrayList<GenericDrug> gdrugs = new ArrayList<GenericDrug>();
 		Controller ctrl = new Controller();
 		gdrugs=ctrl.getAllGenericDrug();
@@ -57,7 +39,7 @@ public class Addmedicine extends HttpServlet {
 		 System.out.println(prueba.getdrugName());
 		                
           request.setAttribute("gdrugs", gdrugs);
-          RequestDispatcher despachadorr = request.getRequestDispatcher("menu.jsp");
+          RequestDispatcher despachadorr = request.getRequestDispatcher("menu");
           despachadorr.forward(request, response);
 		
 		
@@ -82,11 +64,8 @@ public class Addmedicine extends HttpServlet {
 			//HttpSession session = request.getSession(true);
 			//session.setAttribute("userSession", patient);
 			//request.getRequestDispatcher(".jsp").forward(request, response);
-		
-			System.out.println("Medicine Added!");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/addpatient.jsp");
-	        dispatcher.forward(request, response);
-			response.sendRedirect("addmedicine.jsp");
+
+			request.getRequestDispatcher("/WEB-INF/addmedicine.jsp").forward(request, response);
 		}
 	}
 

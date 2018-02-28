@@ -11,8 +11,8 @@
 		<h1>Sell Medicine by prescription only</h1>
 		<h2>Sale registered succesfully</h2>
 		Please select next action:
-		<a href="menu.jsp">Menu</a>
-		<a href="sellmedicine1.jsp">Sell medicine</a>
+		<a href="menu">Menu</a>
+		<a href="sellmedicine1">Sell medicine</a>
 	</div>
 	<%@include file="parts/footer.html"%>
 </body>

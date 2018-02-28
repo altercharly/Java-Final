@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="entities.*"%>
-<%@page import="java.util.*"%>
+<%@page import="java.util.ArrayList"%>
 <%
 	ArrayList<Medicine> lista = new ArrayList<Medicine>();
 	lista = (ArrayList<Medicine>) request.getAttribute("medicines");

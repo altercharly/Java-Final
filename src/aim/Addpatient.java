@@ -25,31 +25,17 @@ public class Addpatient extends HttpServlet {
      */
     public Addpatient() {
     	super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		Controller controller = new Controller();
 		ArrayList<HealthPlan> healthPlans = new ArrayList<HealthPlan>();
 		healthPlans = controller.getAllHealthPlan();
 		request.setAttribute("hplans", healthPlans);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("addpatient.jsp");
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/addpatient.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		System.out.println("llegu�");
-		
 		business.Controller ctrl = new Controller();
 		String name=request.getParameter("name");
 		String surname = request.getParameter("surname");
@@ -79,11 +65,8 @@ public class Addpatient extends HttpServlet {
 			
 			//HttpSession session = request.getSession(true);
 			//session.setAttribute("userSession", patient);
-			//request.getRequestDispatcher(".jsp").forward(request, response);
-		
-			System.out.println("Patient Added!");
-			RequestDispatcher despachadorr = request.getRequestDispatcher("menu.jsp");
-	          despachadorr.forward(request, response);
+			//request.getRequestDispatcher(".jsp").forward(request, response);		
+          request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
 		}
 	}
 

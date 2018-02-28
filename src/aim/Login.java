@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 import entities.*;
 import business.*;
 
-/**
- * Servlet implementation class Login
- */
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,15 +21,11 @@ public class Login extends HttpServlet {
      * Default constructor. 
      */
     public Login() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 	}
 
 	/**
@@ -44,7 +37,7 @@ public class Login extends HttpServlet {
 
 		String userInput = request.getParameter("user");
 		String passwordInput = request.getParameter("password");
-		String nextPage = "";
+		String nextPage;
 		
 		try {
 			Integer userDni = Integer.parseInt(userInput);
@@ -56,17 +49,16 @@ public class Login extends HttpServlet {
 				
 				HttpSession session = request.getSession(true);
 				session.setAttribute("userSession", user);
-				nextPage = "menu.jsp";
+				nextPage = "menu";
 			} else {
-				nextPage = "login.jsp";
+				nextPage = "login";
 				request.setAttribute("errorMessage", "User DNI or password incorrect");
 			}
 		} catch (NumberFormatException e) {
-			nextPage = "login.jsp";
+			nextPage = "login";
 			request.setAttribute("errorMessage", "Please enter only numbers in user (DNI)");
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/" + nextPage + ".jsp").forward(request, response);
 	}
 }

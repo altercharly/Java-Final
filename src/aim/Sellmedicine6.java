@@ -1,9 +1,6 @@
 package aim;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,22 +19,15 @@ import entities.*;
 public class Sellmedicine6 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public Sellmedicine6() {
-    	super();}
-    
-        // TODO Auto-generated constructor stub
-    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/sellmedicine6.jsp");
-		dispatcher.forward(request, response);
-    	}
+	public Sellmedicine6() {
+		super();
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/sellmedicine6.jsp").forward(request, response);
+	}
 
-    	
-    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession mysession = (HttpSession) request.getSession();
 		Patient patient = (Patient) mysession.getAttribute("patient");
 		Professional prof = (Professional) mysession.getAttribute("professional");
@@ -61,7 +51,6 @@ public class Sellmedicine6 extends HttpServlet {
 		pi.setidPrescription(idPrescription);
 		ctrl.setPrescription_Item(pi);
 		ctrl.updateCantItem(item, cantItems);
-		RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine7.jsp");
-		despachadorr.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/sellmedicine7.jsp").forward(request, response);
 	}
 }

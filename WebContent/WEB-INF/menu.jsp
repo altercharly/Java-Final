@@ -12,9 +12,9 @@
 		<div class="menu">
 			<h1>Please, select an option:</h1>
 			<div class="options">
-				<a href="sellmedicine1.jsp">Sell medicine</a>
-				<a href="addmedicine.jsp">New medicine</a>
-				<a href="addpatient.jsp">New patient</a>
+				<a href="sellmedicine1">Sell medicine</a>
+				<a href="addmedicine">New medicine</a>
+				<a href="addpatient">New patient</a>
 			</div>
 		</div>
 	</div>

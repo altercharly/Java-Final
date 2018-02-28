@@ -1,12 +1,7 @@
 package aim;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,22 +16,15 @@ import entities.*;
 public class Sellmedicine4 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public Sellmedicine4() {
-    	super();}
-    
-        // TODO Auto-generated constructor stub
-    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp");
-		dispatcher.forward(request, response);
-    	}
+	public Sellmedicine4() {
+		super();
+	}
 
-    	
-    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp").forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     		HttpSession mysession = (HttpSession) request.getSession();
     		Medicine medicine= (Medicine) mysession.getAttribute("medicine");	
     		int idMedicine= medicine.getidMedicine();
@@ -57,7 +45,6 @@ public class Sellmedicine4 extends HttpServlet {
       		mysession.setAttribute("professional",prof);
 
 		request.setAttribute("item", item);
-		RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine5.jsp");
-		despachadorr.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/sellmedicine5.jsp").forward(request, response);
 	}
 }

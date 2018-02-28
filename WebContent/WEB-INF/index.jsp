@@ -16,11 +16,11 @@
 		<div class="what-we-do-container">
 			<div class="what-we-do">
 				<p>If you are a cashier, please Login</p>
-				<a class="what-we-do-link" href="/login.jsp">Login</a>
+				<a class="what-we-do-link" href="/login">Login</a>
 			</div>
 			<div class="what-we-do">
 				<p>Here you can see our list of medicines</p>
-				<a class="what-we-do-link" href="/see-medicines.jsp">See medicines</a>
+				<a class="what-we-do-link" href="/see-medicines">See medicines</a>
 			</div>
 		</div>
 	</div>
