@@ -5,44 +5,29 @@
 	Item item = new Item();
 	Professional prof = new Professional();
 	Medicine med = new Medicine();
-	HttpSession mysession3= (HttpSession) request.getSession();
 	Double cantPrice = (double)request.getAttribute("calcPrice");
-	HttpSession mysession1= (HttpSession) request.getSession();
-	item= (Item) mysession1.getAttribute("itemsel");
-	HttpSession mysession= (HttpSession) request.getSession();
-	prof= (Professional) mysession.getAttribute("professional");
-	HttpSession mysession2= (HttpSession) request.getSession();
-	med= (Medicine) mysession.getAttribute("medicine");
-	HttpSession mysession5= (HttpSession) request.getSession();
-	int cantItems= (int) mysession5.getAttribute("cantItems");
+	HttpSession mysession = (HttpSession) request.getSession();
+	item = (Item)mysession.getAttribute("itemsel");
+	prof = (Professional)mysession.getAttribute("professional");
+	med = (Medicine)mysession.getAttribute("medicine");
+	int cantItems = (int)mysession.getAttribute("cantItems");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>UTN Pharmacy</title>
+	<meta charset="UTF-8">
+	<title>Sell medicine step 6</title>
 </head>
 <body>
-	<div class='header'>
-		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> Detail </p>
-	</div>
-	<div class='content'>
-		<form class="form-sellmedicine6" action="sellmedicine6" method="post">
-			<h2 class="form-sellmedicine6-heading">Please confirm the sale: </h2>
-			<% out.println("Professional Name: "+prof.getsurname()+", "+prof.getname()); %>
-			<br>
-			<br>
-			<% out.println("Medicine name: "+med.getname()); %>
-			<br>
-			<br>
-			<% out.println("Selected items: "+cantItems); %>
-			<br>
-			<br>
-			<% out.println("Calculated price: "+ cantPrice); %>
-			<br>
-			<br>
-			<input type='submit' name="registerSale" value='Register' />
+	<%@include file="parts/header.html" %>
+	<div class="content">
+		<h2>Please confirm the sale: </h2>
+		<form action="sellmedicine6" method="post">
+			<% out.println("Professional Name: " + prof.getsurname() + ", " + prof.getname()); %>
+			<% out.println("Medicine name: " + med.getname()); %>
+			<% out.println("Selected items: " + cantItems); %>
+			<% out.println("Calculated price: " + cantPrice); %>
+			<button type="submit">Register</button>
 		</form>
 	</div>
 </body>
