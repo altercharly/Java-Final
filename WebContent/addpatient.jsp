@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="entities.*"%>
-<%@page import="business.*"%>
-<%@page import="aim.*"%>
-<%@page import="java.util.*"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="entities.HealthPlan"%>
+<%@page import="java.util.ArrayList"%>
 <%
 	ArrayList<HealthPlan> lista = new ArrayList<HealthPlan>();
-	lista = (ArrayList<HealthPlan>)request.getAttribute("hplans");
+	lista = (ArrayList<HealthPlan>) request.getAttribute("hplans");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,10 +12,10 @@
 	<title>Add patient</title>
 </head>
 <body>
-	<%@include file="parts/header.html" %>
+	<%@include file="parts/header.html"%>
 	<div class="content">
 		<form action="addpatient" method="post">
-			<h2>Please register new patient</h2>
+			<h1>Please register new patient</h1>
 			<label>
 				Surname:
 				<input name="surname" required autofocus>
@@ -47,6 +45,6 @@
 			<button type="submit">Register</button>
 		</form>
 	</div>
-	<%@include file="parts/footer.html" %>
+	<%@include file="parts/footer.html"%>
 </body>
 </html>

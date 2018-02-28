@@ -1,9 +1,9 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="entities.*"%>
-<%@page import="java.util.*"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="entities.Presentation"%>
+<%@page import="java.util.ArrayList"%>
 <%
 	ArrayList<Presentation> lista = new ArrayList<Presentation>();
-	lista = (ArrayList<Presentation>)request.getAttribute("pres");
+	lista = (ArrayList<Presentation>) request.getAttribute("pres");
 %>
 <!DOCTYPE html>
 <html>
@@ -12,10 +12,11 @@
 	<title>Sell medicine step 4</title>
 </head>
 <body>
-	<%@include file="parts/header.html" %>
+	<%@include file="parts/header.html"%>
 	<div class="content">
-		<h2>Please select Medicine Presentation:</h2>
 		<form action="sellmedicine4" method="post">
+			<h1>Sell Medicine by prescription only</h1>
+			<h2>Please select Medicine Presentation:</h2>
 			<label>
 				Presentation:
 				<select name="idPresentation" required autofocus>
@@ -33,6 +34,6 @@
 			<button type="submit">Select</button>
 		</form>
 	</div>
-	<%@include file="parts/footer.html" %>
+	<%@include file="parts/footer.html"%>
 </body>
 </html>
