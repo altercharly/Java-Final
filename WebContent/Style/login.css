@@ -15,6 +15,7 @@
 
 @media only screen and (max-width: 767px) {
 	.login-form {
+		/* box properties */
 		width: 90%;
 	}
 }
@@ -27,5 +28,12 @@ label {
 }
 
 .login-submit {
+	/* box properties */
 	margin: 2vh 2vw;
+}
+
+.errorMessage {
+	/* text properties */
+	color: #9F0000;
+	font-weight: bold;
 }

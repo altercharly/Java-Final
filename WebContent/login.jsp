@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.*"%>
+<%
+	String errorMessage = request.getAttribute("errorMessage") == null ? "" : (String)request.getAttribute("errorMessage");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +24,7 @@
 				<input name="password" type="password" required>
 			</label>     
 			<button type="submit" class="login-submit">Login</button>
+			<span class="errorMessage"><% out.println(errorMessage); %></span>
 		</form>
 	</div>
 	<%@include file="parts/footer.html" %>

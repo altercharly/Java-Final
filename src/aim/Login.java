@@ -44,19 +44,29 @@ public class Login extends HttpServlet {
 
 		String userInput = request.getParameter("user");
 		String passwordInput = request.getParameter("password");
+		String nextPage = "";
 		
-		if (controller.validateUser(Integer.parseInt(userInput), passwordInput)) {
-			User user = new User();
-			user.setEmail(userInput);
-			user.setPassword(passwordInput);
+		try {
+			Integer userDni = Integer.parseInt(userInput);
 			
-			HttpSession session = request.getSession(true);
-			session.setAttribute("userSession", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-			dispatcher.forward(request, response);
+			if (controller.validateUser(userDni, passwordInput)) {
+				User user = new User();
+				user.setEmail(userInput);
+				user.setPassword(passwordInput);
+				
+				HttpSession session = request.getSession(true);
+				session.setAttribute("userSession", user);
+				nextPage = "menu.jsp";
+			} else {
+				nextPage = "login.jsp";
+				request.setAttribute("errorMessage", "User DNI or password incorrect");
+			}
+		} catch (NumberFormatException e) {
+			nextPage = "login.jsp";
+			request.setAttribute("errorMessage", "Please enter only numbers in user (DNI)");
 		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+		dispatcher.forward(request, response);
 	}
 }
