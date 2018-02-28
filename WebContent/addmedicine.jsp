@@ -5,55 +5,40 @@
 	ArrayList<GenericDrug> lista= new ArrayList<GenericDrug>();
 	lista=(ArrayList<GenericDrug>)request.getAttribute("gdrugs");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta charset="UTF-8">
 	<title>UTN Pharmacy</title>
 </head>
 <body>
-	<div class='header'>
-		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> UTN Pharmacy </p>
-	</div>
-	<div class='content'>
-		<form class="form-addmedicine" action="addmedicine" method="post">
-			<h2 class="form-addmedicine-heading">Please register new medicine</h2>
-			<h1>Generic Drugs Registered: </h1>
-			<table border="1">
-				<thead>
-					<th>ID Drug</th>
-					<th>Name</th>
-				</thead>
-				<tbody>
+	<%@include file="parts/header.html" %>
+	<div class="content">
+		<form action="addmedicine" method="post">
+			<h2>Please enter new medicine info</h2>
+			<label>
+				Generic drug:
+				<select name="iddrug" required autofocus>
 					<%
 						for( GenericDrug gen : lista) {
 					%>
-							<tr>
-								<td><% out.println(gen.getidDrug()); %></td>
-								<td><% out.println(gen.getdrugName());  %></td>
-							</tr>
+							<option value="<% out.println(gen.getidDrug()); %>"><% out.println(gen.getdrugName());  %></option>
 					<%
 						}
 					%>
-				</tbody>
-			</table>
-			<br>
-			<br>
-			<label for="inputDrug" class="sr-only">ID Drug :</label>
-			<input name="iddrug" id="inputIdDrug" class="form-control" placeholder="" required="" autofocus="">
-			<br>
-			<br>
-			<label for="inputName" class="sr-only">Comercial Names :</label>
-			<input name="name" id="inputName" class="form-control" placeholder="" required="" autofocus=""> 
-			<br>
-			<br>
-			<label for="inputDescription" class="sr-only">Description :</label>
-			<input name="description" id="inputDescription" class="form-control" placeholder="" required="" autofocus=""> 
-			<br>
-			<br>
-			<button class="btn" type="submit">Register</button>
+				</select>
+			</label>
+			<label>
+				Comercial Names:
+				<input name="name" required>
+			</label>
+			<label>
+				Description:
+				<input name="description" required>
+			</label>
+			<button type="submit">Register</button>
 		</form>
 	</div>
+	<%@include file="parts/footer.html" %>
 </body>
 </html>
