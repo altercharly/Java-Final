@@ -38,33 +38,20 @@ public class Sellmedicine5 extends HttpServlet {
     	
     	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     		// TODO Auto-generated method stub
-    		//doGet(request, response);
-    		
-    		System.out.println("llegué");
-    		HttpSession mysession= (HttpSession) request.getSession();
-    		 
-    		Medicine medicine= (Medicine) mysession.getAttribute("medicine");	
-    		int idMedicine= medicine.getidMedicine();
-    		
-    		String cantItem=request.getParameter("cantItem");
-    		
+    		HttpSession mysession = (HttpSession) request.getSession();
+    		Medicine medicine = (Medicine) mysession.getAttribute("medicine");
+    		int idMedicine = medicine.getidMedicine();
+    		String cantItem = request.getParameter("cantItem");
     		int cantItems = Integer.parseInt(cantItem);
     		
-    		HttpSession mysession2= request.getSession(true);
-      		mysession2.setAttribute("cantItems",cantItems);
+      		mysession.setAttribute("cantItems",cantItems);
     		System.out.println("Items registered: " + cantItems);
-    		
-    		HttpSession mysession3= (HttpSession) request.getSession();
-    		Item item= (Item) mysession3.getAttribute("itemsel");
-    		
-    		
-    	business.Controller ctrl = new Controller();
-    	double calcPrice = (double)ctrl.calcPriceItem(item, cantItems);
-    		 
-    		 request.setAttribute("calcPrice", calcPrice);
-	          RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine6.jsp");
-	          despachadorr.forward(request, response);
-    		
-    
-    		}
-    	}
+
+    		Item item= (Item) mysession.getAttribute("itemsel");
+	    	business.Controller ctrl = new Controller();
+	    	double calcPrice = (double)ctrl.calcPriceItem(item, cantItems);
+		request.setAttribute("calcPrice", calcPrice);
+		RequestDispatcher despachadorr = request.getRequestDispatcher("sellmedicine6.jsp");
+		despachadorr.forward(request, response);
+	}
+}
