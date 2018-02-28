@@ -5,45 +5,33 @@
 	Item item = new Item();
 	Professional prof = new Professional();
 	Medicine med = new Medicine();
-	HttpSession mysession3= (HttpSession) request.getSession();
-	item= (Item) mysession3.getAttribute("itemsel");
-	HttpSession mysession= (HttpSession) request.getSession();
-	prof= (Professional) mysession.getAttribute("professional");
-	HttpSession mysession2= (HttpSession) request.getSession();
-	med= (Medicine) mysession.getAttribute("medicine");
+	HttpSession mysession = (HttpSession) request.getSession();
+	item = (Item)mysession.getAttribute("itemsel");
+	prof = (Professional)mysession.getAttribute("professional");
+	med = (Medicine)mysession.getAttribute("medicine");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>UTN Pharmacy</title>
+	<meta charset="UTF-8">
+	<title>Sell medicine step 5</title>
 </head>
 <body>
-	<div class='header'>
-		<!-- img class='logo' src=" " -->
-		<p class='header-tittle'> Detail </p>
-	</div>
-	<div class='content'>
-		<form class="form-sellmedicine5" action="sellmedicine5" method="post">
-			<h2 class="form-sellmedicine5-heading">Please choose quantity of items: </h2>
+	<%@include file="parts/header.html" %>
+	<div class="content">
+		<h2>Please choose quantity of items: </h2>
+		<form action="sellmedicine5" method="post">
 			<% out.println("Professional Name: "+prof.getsurname()+", "+prof.getname()); %>
-			<br>
-			<br>
 			<% out.println("Medicine name: "+med.getname()); %>
-			<br>
-			<br>
 			<% out.println("Stock Medicine: "+item.getcantStock()); %>
-			<br>
-			<br>
 			<% out.println("Price: "+item.getprice()); %>
-			<br>
-			<br>
-			<label for="inputCantItem" class="sr-only">Items number: </label>
-			<input name="cantItem" id="inputCantItem" class="form-control" placeholder="" required="" autofocus=""> 
-			<br>
-			<br>
-			<input type='submit' name="setCantItem" value='Select' />
+			<label>
+				Items number:
+				<input name="cantItem" required autofocus>
+			</label>
+			<button type="submit">Select</button>
 		</form>
 	</div>
+	<%@include file="parts/footer.html" %>
 </body>
 </html>
