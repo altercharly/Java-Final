@@ -21,10 +21,10 @@
 	<div class="content">
 		<h2>Please choose quantity of items: </h2>
 		<form action="sellmedicine5" method="post">
-			<% out.println("Professional Name: "+prof.getsurname()+", "+prof.getname()); %>
-			<% out.println("Medicine name: "+med.getname()); %>
-			<% out.println("Stock Medicine: "+item.getcantStock()); %>
-			<% out.println("Price: "+item.getprice()); %>
+			<% out.println("Professional Name: " + prof.getsurname() + ", " + prof.getname()); %>
+			<% out.println("Medicine name: " + med.getname()); %>
+			<% out.println("Stock Medicine: " + item.getcantStock()); %>
+			<% out.println("Price: " + item.getprice()); %>
 			<label>
 				Items number:
 				<input name="cantItem" required autofocus>
