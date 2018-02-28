@@ -9,7 +9,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>UTN Pharmacy</title>
+	<title>Add medicine</title>
 </head>
 <body>
 	<%@include file="parts/header.html" %>
