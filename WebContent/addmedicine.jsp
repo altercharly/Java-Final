@@ -19,13 +19,9 @@
 			<label>
 				Generic drug:
 				<select name="iddrug" required autofocus>
-					<%
-						for( GenericDrug gen : lista) {
-					%>
-							<option value="<% out.println(gen.getidDrug()); %>"><% out.println(gen.getdrugName());  %></option>
-					<%
-						}
-					%>
+					<% for( GenericDrug gen : lista) { %>
+						<option value="<% out.println(gen.getidDrug()); %>"><% out.println(gen.getdrugName());  %></option>
+					<% } %>
 				</select>
 			</label>
 			<label>
