@@ -33,8 +33,10 @@
 			<label>
 				Health Plan:
 				<select name="healthPlanId" required>
-					<% for( HealthPlan hp : lista) { %>
-						<option value="<% out.println(hp.getidHealthPlan()); %>"><% out.println(hp.getnameHP()); %></option>
+					<% for (HealthPlan hp : lista) { %>
+						<option value="<% out.println(hp.getidHealthPlan()); %>">
+							<% out.println(hp.getnameHP()); %>
+						</option>
 					<% } %>
 				</select>
 			</label>
