@@ -30,5 +30,6 @@
 			<button type="submit">Register</button>
 		</form>
 	</div>
+	<%@include file="parts/footer.html" %>
 </body>
 </html>
