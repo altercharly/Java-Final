@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,7 @@
 	<title>Sell medicine step 1</title>
 </head>
 <body>
-	<%@include file="../parts/header.html"%>
+	<%@include file="../parts/header.jsp" %>
 	<div class="content">
 		<form action="sellmedicine1" method="post">
 			<h1>Sell Medicine by prescription only</h1>
@@ -22,6 +22,6 @@
 			<button type="submit">Search</button>
 		</form>
 	</div>
-	<%@include file="../parts/footer.html"%>
+	<%@include file="../parts/footer.html" %>
 </body>
 </html>

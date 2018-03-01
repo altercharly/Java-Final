@@ -1,5 +1,5 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="entities.User"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="entities.User" %>
 <%
 	User loggedUser = (User) session.getAttribute("userSession");
 %>
@@ -11,7 +11,7 @@
 	<link href="Style/index.css" rel="stylesheet">
 </head>
 <body>
-	<%@include file="../parts/header.html" %>
+	<%@include file="../parts/header.jsp" %>
 	<div class="content">
 		<div class="presentation">
 			<h1>Welcome to UTN Pharmacy</h1>

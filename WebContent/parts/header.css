@@ -44,3 +44,23 @@
 	/* text properties */
 	color: #000;
 }
+
+.header-logout-container {
+	/* box properties */
+	display: flex;
+	align-items: center;
+	height: 100%;
+	float: right;
+}
+
+.header-logout-link {
+	/* box properties */
+	padding: 1vh 1vw;
+	/* box borders */
+	border: 2px solid #000;
+	border-radius: 5px;
+	/* text properties */
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+}

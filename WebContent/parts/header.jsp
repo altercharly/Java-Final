@@ -4,9 +4,14 @@
 <link href="parts/header.css" rel="stylesheet">
 <div class="header-container">
 	<div class="header">
-		<a class="header-link" href="/">
+		<a href="/" class="header-link">
 			<img class="logo" src="images/logo.svg">
 			<span class="header-title"> UTN Pharmacy </span>
 		</a>
+		<% if (session.getAttribute("userSession") != null) { %>
+			<div class="header-logout-container">
+				<a href="/logout" class="header-logout-link">Logout</a>
+			</div>
+		<% } %>
 	</div>
 </div>

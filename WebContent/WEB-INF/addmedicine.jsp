@@ -1,6 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="entities.GenericDrug"%>
-<%@page import="java.util.ArrayList"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="entities.GenericDrug" %>
+<%@page import="java.util.ArrayList" %>
 <%
 	ArrayList<GenericDrug> lista = new ArrayList<GenericDrug>();
 	lista = (ArrayList<GenericDrug>) request.getAttribute("gdrugs");
@@ -12,7 +12,7 @@
 	<title>Add medicine</title>
 </head>
 <body>
-	<%@include file="../parts/header.html"%>
+	<%@include file="../parts/header.jsp" %>
 	<div class="content">
 		<form action="addmedicine" method="post">
 			<h1>Please enter new medicine info</h1>
@@ -37,6 +37,6 @@
 			<button type="submit">Register</button>
 		</form>
 	</div>
-	<%@include file="../parts/footer.html"%>
+	<%@include file="../parts/footer.html" %>
 </body>
 </html>

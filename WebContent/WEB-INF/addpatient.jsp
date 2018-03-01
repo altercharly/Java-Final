@@ -1,6 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="entities.HealthPlan"%>
-<%@page import="java.util.ArrayList"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="entities.HealthPlan" %>
+<%@page import="java.util.ArrayList" %>
 <%
 	ArrayList<HealthPlan> lista = new ArrayList<HealthPlan>();
 	lista = (ArrayList<HealthPlan>) request.getAttribute("hplans");
@@ -12,7 +12,7 @@
 	<title>Add patient</title>
 </head>
 <body>
-	<%@include file="../parts/header.html"%>
+	<%@include file="../parts/header.jsp" %>
 	<div class="content">
 		<form action="addpatient" method="post">
 			<h1>Please register new patient</h1>
@@ -45,6 +45,6 @@
 			<button type="submit">Register</button>
 		</form>
 	</div>
-	<%@include file="../parts/footer.html"%>
+	<%@include file="../parts/footer.html" %>
 </body>
 </html>

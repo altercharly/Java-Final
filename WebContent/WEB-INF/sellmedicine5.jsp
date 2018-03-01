@@ -1,5 +1,5 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="entities.*"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="entities.*" %>
 <%
 	Item item = new Item();
 	Professional prof = new Professional();
@@ -16,15 +16,15 @@
 	<title>Sell medicine step 5</title>
 </head>
 <body>
-	<%@include file="../parts/header.html"%>
+	<%@include file="../parts/header.jsp" %>
 	<div class="content">
 		<form action="sellmedicine5" method="post">
 			<h1>Sell Medicine by prescription only</h1>
 			<h2>Please choose quantity of items:</h2>
-			<% out.println("Professional Name: " + prof.getsurname() + ", " + prof.getname()); %>
-			<% out.println("Medicine name: " + med.getname()); %>
-			<% out.println("Stock Medicine: " + item.getcantStock()); %>
-			<% out.println("Price: " + item.getprice()); %>
+			Professional Name: <%=prof.getsurname() %>, <%=prof.getname() %>
+			Medicine name: <%=med.getname() %>
+			Stock Medicine: <%=item.getcantStock() %>
+			Price: <%=item.getprice() %>
 			<label>
 				Items number:
 				<input name="cantItem" required autofocus>
@@ -32,6 +32,6 @@
 			<button type="submit">Select</button>
 		</form>
 	</div>
-	<%@include file="../parts/footer.html"%>
+	<%@include file="../parts/footer.html" %>
 </body>
 </html>

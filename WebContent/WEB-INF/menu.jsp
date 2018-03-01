@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 	<link href="Style/menu.css" rel="stylesheet">
 </head>
 <body>
-	<%@include file="../parts/header.html" %>
+	<%@include file="../parts/header.jsp" %>
 	<div class="content">
 		<div class="menu">
 			<h1>Please, select an option:</h1>
