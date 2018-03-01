@@ -6,7 +6,7 @@
 	<title>Sell medicine step 7</title>
 </head>
 <body>
-	<%@include file="parts/header.html"%>
+	<%@include file="../parts/header.html"%>
 	<div class="content">
 		<h1>Sell Medicine by prescription only</h1>
 		<h2>Sale registered succesfully</h2>
@@ -14,6 +14,6 @@
 		<a href="menu">Menu</a>
 		<a href="sellmedicine1">Sell medicine</a>
 	</div>
-	<%@include file="parts/footer.html"%>
+	<%@include file="../parts/footer.html"%>
 </body>
 </html>

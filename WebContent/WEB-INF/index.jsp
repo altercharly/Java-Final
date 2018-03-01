@@ -7,7 +7,7 @@
 	<link href="Style/index.css" rel="stylesheet">
 </head>
 <body>
-	<%@include file="parts/header.html" %>
+	<%@include file="../parts/header.html" %>
 	<div class="content">
 		<div class="presentation">
 			<h1>Welcome to UTN Pharmacy</h1>
@@ -24,6 +24,6 @@
 			</div>
 		</div>
 	</div>
-	<%@include file="parts/footer.html" %>
+	<%@include file="../parts/footer.html" %>
 </body>
 </html>

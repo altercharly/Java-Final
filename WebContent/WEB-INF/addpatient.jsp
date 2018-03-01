@@ -12,7 +12,7 @@
 	<title>Add patient</title>
 </head>
 <body>
-	<%@include file="parts/header.html"%>
+	<%@include file="../parts/header.html"%>
 	<div class="content">
 		<form action="addpatient" method="post">
 			<h1>Please register new patient</h1>
@@ -45,6 +45,6 @@
 			<button type="submit">Register</button>
 		</form>
 	</div>
-	<%@include file="parts/footer.html"%>
+	<%@include file="../parts/footer.html"%>
 </body>
 </html>

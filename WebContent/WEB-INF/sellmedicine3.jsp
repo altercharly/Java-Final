@@ -12,7 +12,7 @@
 	<title>Sell medicine step 3</title>
 </head>
 <body>
-	<%@include file="parts/header.html"%>
+	<%@include file="../parts/header.html"%>
 	<div class="content">
 		<form action="sellmedicine3" method="post">
 			<h1>Sell Medicine by prescription only</h1>
@@ -30,6 +30,6 @@
 			<button type='submit'>Search Presentation</button>
 		</form>
 	</div>
-	<%@include file="parts/footer.html"%>
+	<%@include file="../parts/footer.html"%>
 </body>
 </html>

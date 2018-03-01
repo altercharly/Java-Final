@@ -10,7 +10,7 @@
 	<link href="Style/login.css" rel="stylesheet">
 </head>
 <body>
-	<%@include file="parts/header.html" %>
+	<%@include file="../parts/header.html" %>
 	<div class="content">
 		<form action="login" method="post" class="login-form">
 			<h1>Please login</h1>
@@ -26,6 +26,6 @@
 			<span class="errorMessage"><% out.println(errorMessage); %></span>
 		</form>
 	</div>
-	<%@include file="parts/footer.html" %>
+	<%@include file="../parts/footer.html" %>
 </body>
 </html>
