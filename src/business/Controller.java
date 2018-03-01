@@ -41,6 +41,11 @@ public Professional getProfessional (int regNumber){
 	return professional;
 }
 
+public User getUser (int dni, String pass) {
+	UsersCatalog usersCatalog = new UsersCatalog();
+	return usersCatalog.getUser(dni, pass);
+}
+
 public boolean validateUser (int dni, String pass){
 	//asks UserCatalog if the dni number belongs to a registered user
 	User us = new User();
@@ -48,12 +53,12 @@ public boolean validateUser (int dni, String pass){
 	us=user.getUser(dni, pass);
 	System.out.println("User: " + us.getDni() + "Pass: " + us.getPassword()) ;
 	if ( us.getDni()==dni){
-		System.out.println("Se encontró el usuario!");
+		System.out.println("Se encontrï¿½ el usuario!");
 		return true;
 	}else {
-		System.out.println("No se encontró el usuario!");
+		System.out.println("No se encontrï¿½ el usuario!");
 		return false;
-	}	
+	}
 }
 boolean validatePatient(int affiliate){
 	PatientCatalog patientcatalog= new PatientCatalog();

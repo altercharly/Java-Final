@@ -1,4 +1,8 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="entities.User"%>
+<%
+	User loggedUser = (User) session.getAttribute("userSession");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +19,13 @@
 		</div>
 		<div class="what-we-do-container">
 			<div class="what-we-do">
-				<p>If you are a cashier, please Login</p>
-				<a class="what-we-do-link" href="/login">Login</a>
+				<% if (loggedUser == null) { %>
+					<p>If you are a cashier, please Login</p>
+					<a class="what-we-do-link" href="/login">Login</a>
+				<% } else { %>
+					<p>Welcome <% out.println(loggedUser.getName()); %></p>
+					<a class="what-we-do-link" href="/menu">Menu</a>
+				<% } %>
 			</div>
 			<div class="what-we-do">
 				<p>Here you can see our list of medicines</p>
