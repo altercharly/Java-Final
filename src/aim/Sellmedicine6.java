@@ -23,7 +23,13 @@ public class Sellmedicine6 extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/sellmedicine6.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			request.getRequestDispatcher("/WEB-INF/sellmedicine6.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

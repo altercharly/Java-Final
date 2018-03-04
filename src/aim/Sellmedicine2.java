@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import business.*;
 import entities.*;
@@ -21,7 +22,13 @@ public class Sellmedicine2 extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/sellmedicine2.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			request.getRequestDispatcher("/WEB-INF/sellmedicine2.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		}
 	}	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

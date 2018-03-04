@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import business.*;
 import entities.*;
@@ -22,11 +23,17 @@ public class Addmedicine extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Controller controller = new Controller();
-		ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
-		genericDrugs = controller.getAllGenericDrug();
-		request.setAttribute("gdrugs", genericDrugs);
-		request.getRequestDispatcher("/WEB-INF/addmedicine.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller controller = new Controller();
+			ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
+			genericDrugs = controller.getAllGenericDrug();
+			request.setAttribute("gdrugs", genericDrugs);
+			request.getRequestDispatcher("/WEB-INF/addmedicine.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
