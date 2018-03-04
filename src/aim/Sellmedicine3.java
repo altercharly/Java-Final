@@ -32,24 +32,20 @@ public class Sellmedicine3 extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		String medicineName=request.getParameter("medicineName");
-    		business.Controller ctrl = new Controller();
-    		Medicine medicine = new Medicine();
-    		medicine=ctrl.getMedicineByName(medicineName);
-    		
-    		ArrayList<Presentation> pres = new ArrayList<Presentation>();
-    		pres=ctrl.getPresentationByMedicine(medicine.getidMedicine());
-    		
-    		System.out.println("Presentations selected!");
-    		   		
-    	
-    		HttpSession mysession= request.getSession(true);
-      		mysession.setAttribute("medicine",medicine);
-    		
-    		 request.setAttribute("pres", pres);
-	          request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp").forward(request, response);
-    		
-    
-    		}
-    	}
-
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
+			
+			Medicine medicine = new Medicine();
+			medicine=ctrl.getMedicineByName(request.getParameter("medicineName"));
+			
+			ArrayList<Presentation> pres = new ArrayList<Presentation>();
+			pres = ctrl.getPresentationByMedicine(medicine.getidMedicine());
+			
+			session.setAttribute("medicine", medicine);
+    		request.setAttribute("pres", pres);
+    		request.getRequestDispatcher("/WEB-INF/sellmedicine4.jsp").forward(request, response);
+		}
+	}
+}

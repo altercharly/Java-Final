@@ -31,26 +31,21 @@ public class Sellmedicine4 extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		HttpSession mysession = (HttpSession) request.getSession();
-    		Medicine medicine= (Medicine) mysession.getAttribute("medicine");	
-    		int idMedicine= medicine.getidMedicine();
-    		
-    		String idPresentation=request.getParameter("idPresentation");
-    		int idpres = Integer.parseInt(idPresentation);
-    		business.Controller ctrl = new Controller();
-    		Item item = new Item();
-    		item=ctrl.getItem(idMedicine, idpres);
-    		
-    		System.out.println("Item selected!");
-      		mysession.setAttribute("itemsel",item);
-    		String regNumberP=request.getParameter("regNumberP");
-    		Professional prof = new Professional();
-    		int regNumber = Integer.parseInt(regNumberP);
-    		prof=ctrl.getProfessional(regNumber);
-    		System.out.println("Professional selected!: "+prof.getsurname());
-      		mysession.setAttribute("professional",prof);
-
-		request.setAttribute("item", item);
-		request.getRequestDispatcher("/WEB-INF/sellmedicine5.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
+			Medicine medicine = (Medicine) session.getAttribute("medicine");
+			Item item = new Item();
+			item = ctrl.getItem(medicine.getidMedicine(), Integer.parseInt(request.getParameter("idPresentation")));
+			
+			Professional prof = new Professional();
+			prof = ctrl.getProfessional(Integer.parseInt(request.getParameter("regNumberP")));
+			
+			session.setAttribute("professional", prof);
+			session.setAttribute("itemsel", item);
+			request.setAttribute("item", item);
+			request.getRequestDispatcher("/WEB-INF/sellmedicine5.jsp").forward(request, response);
+		}
 	}
 }

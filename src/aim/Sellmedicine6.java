@@ -33,29 +33,32 @@ public class Sellmedicine6 extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession mysession = (HttpSession) request.getSession();
-		Patient patient = (Patient) mysession.getAttribute("patient");
-		Professional prof = (Professional) mysession.getAttribute("professional");
-		Medicine med = (Medicine) mysession.getAttribute("medicine");
-		Item item = (Item) mysession.getAttribute("itemsel");
-	 	int cantItems = (int) mysession.getAttribute("cantItems");
-		Controller ctrl = new Controller();
-		double total = cantItems*(double)item.getprice();
-		Prescription p = new Prescription();
-		p.setidItem(item.getidItem());
-		p.setidpatient(patient.getidPatient());
-		p.setidproffesional(prof.getidProffesional());
-		Calendar date = Calendar.getInstance();
-		Date prescdate = date.getTime();
-		p.setprescriptionDate(prescdate);
-		p.setTotal(total);
-		int idPrescription = ctrl.setPrescription(p);
-		Prescription_Item pi = new Prescription_Item();
-		pi.setCantItem(cantItems);
-		pi.setIdItem(item.getidItem());
-		pi.setidPrescription(idPrescription);
-		ctrl.setPrescription_Item(pi);
-		ctrl.updateCantItem(item, cantItems);
-		request.getRequestDispatcher("/WEB-INF/sellmedicine7.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
+			Patient patient = (Patient) session.getAttribute("patient");
+			Professional prof = (Professional) session.getAttribute("professional");
+			Item item = (Item) session.getAttribute("itemsel");
+		 	int cantItems = (int) session.getAttribute("cantItems");
+			
+			double total = cantItems * (double) item.getprice();
+			Prescription p = new Prescription();
+			p.setidItem(item.getidItem());
+			p.setidpatient(patient.getidPatient());
+			p.setidproffesional(prof.getidProffesional());
+			Calendar date = Calendar.getInstance();
+			Date prescdate = date.getTime();
+			p.setprescriptionDate(prescdate);
+			p.setTotal(total);
+			int idPrescription = ctrl.setPrescription(p);
+			Prescription_Item pi = new Prescription_Item();
+			pi.setCantItem(cantItems);
+			pi.setIdItem(item.getidItem());
+			pi.setidPrescription(idPrescription);
+			ctrl.setPrescription_Item(pi);
+			ctrl.updateCantItem(item, cantItems);
+			request.getRequestDispatcher("/WEB-INF/sellmedicine7.jsp").forward(request, response);
+		}
 	}
 }

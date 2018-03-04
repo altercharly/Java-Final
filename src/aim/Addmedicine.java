@@ -37,43 +37,22 @@ public class Addmedicine extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<GenericDrug> gdrugs = new ArrayList<GenericDrug>();
-		Controller ctrl = new Controller();
-		gdrugs=ctrl.getAllGenericDrug();
-		
-		GenericDrug prueba = new GenericDrug();
-		 prueba = (GenericDrug)gdrugs.get(0);
-		 System.out.println(prueba.getdrugName());
-		                
-          request.setAttribute("gdrugs", gdrugs);
-          RequestDispatcher despachadorr = request.getRequestDispatcher("menu");
-          despachadorr.forward(request, response);
-		
-		
-		
-		
-		
-		
-		String name=request.getParameter("name");
-		String description = request.getParameter("description");
-		String idDrug = request.getParameter("iddrug");
-	    
-		
-	    Medicine medicine = new Medicine();
-	    medicine.setname(name);
-	    medicine.setdescription(description);
-	    GenericDrug gdrug = new GenericDrug();
-	    gdrug.setidDrug(Integer.parseInt(idDrug));
-	    medicine.setgenericDrugs(gdrug);
-	   ctrl.addMedicine(medicine);	    
-		
-			
-			//HttpSession session = request.getSession(true);
-			//session.setAttribute("userSession", patient);
-			//request.getRequestDispatcher(".jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
 
+			Medicine medicine = new Medicine();
+			medicine.setname(request.getParameter("name"));
+			medicine.setdescription(request.getParameter("description"));
+			
+			GenericDrug gdrug = new GenericDrug();
+			gdrug.setidDrug(Integer.parseInt(request.getParameter("iddrug")));
+			
+			medicine.setgenericDrugs(gdrug);
+			ctrl.addMedicine(medicine);
+			
 			request.getRequestDispatcher("/WEB-INF/addmedicine.jsp").forward(request, response);
 		}
 	}
-
-
+}

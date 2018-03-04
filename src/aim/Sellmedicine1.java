@@ -31,30 +31,29 @@ public class Sellmedicine1 extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		business.Controller ctrl = new Controller();
-		String healthPlanId=request.getParameter("healthPlanId");
-		String affiliateNHP = request.getParameter("affiliateNumberHP");
-    	
-		HealthPlan hplan = new HealthPlan();
-		hplan=ctrl.getHealthPlan(Integer.parseInt(healthPlanId));	
-		System.out.println("HealthPlan selected!");
-    		
-		Patient patient = new Patient();
-		patient=ctrl.getPatient(Integer.parseInt(affiliateNHP));
-		System.out.println("Patient selected!");
- 
-		boolean answer = ctrl.validatecantmaxPrescription(Integer.parseInt(healthPlanId), patient.getidPatient());
-		if (answer) {
-			System.out.println("Patient can buy medicine!");
-			//saves the Patient in Session
-			HttpSession mysession= request.getSession(true);
-			mysession.setAttribute("patient",patient);
-    			
-			System.out.println("Patient name:" + patient.getname() + "Health Plan name" + hplan.getnameHP());
-    	} else {
-    		System.out.println("Patient can't buy medicine! Sorry");
-    	}
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
 
-		request.getRequestDispatcher("/WEB-INF/sellmedicine2.jsp").forward(request, response);
+			int healthPlanId = Integer.parseInt(request.getParameter("healthPlanId")); 
+			HealthPlan hplan = new HealthPlan();
+			hplan = ctrl.getHealthPlan(healthPlanId);
+
+			Patient patient = new Patient();
+			patient = ctrl.getPatient(Integer.parseInt(request.getParameter("affiliateNumberHP")));
+
+			boolean answer = ctrl.validatecantmaxPrescription(healthPlanId, patient.getidPatient());
+			if (answer) {
+				System.out.println("Patient can buy medicine!");
+				//saves the Patient in Session
+				session.setAttribute("patient", patient);
+				System.out.println("Patient name:" + patient.getname() + "Health Plan name" + hplan.getnameHP());
+			} else {
+				System.out.println("Patient can't buy medicine! Sorry");
+			}
+			
+			request.getRequestDispatcher("/WEB-INF/sellmedicine2.jsp").forward(request, response);
+		}
 	}
 }

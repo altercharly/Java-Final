@@ -42,37 +42,20 @@ public class Addpatient extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		business.Controller ctrl = new Controller();
-		String name=request.getParameter("name");
-		String surname = request.getParameter("surname");
-		String affiliateNHP = request.getParameter("affiliateNHP");
-	    String birthdate = request.getParameter("birthdate");
-	    String healthPlanId = request.getParameter("healthPlanId");
-	    
-	    Patient patient = new Patient();
-	    patient.setname(name);
-	    patient.setsurname(surname);
-	    SimpleDateFormat formateText = new SimpleDateFormat("dd-MM-yyy");
-	    Date date = null;
-	    try {
-			date=formateText.parse(birthdate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    patient.setbirthdate(Integer.parseInt(birthdate));
-	    patient.setaffiliateNumberHP(Integer.parseInt(affiliateNHP));
-	    patient.setHealthPlanId(Integer.parseInt(healthPlanId));
-	    
-	    
-	   ctrl.addPatient(patient);
-	    
-		
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
 			
-			//HttpSession session = request.getSession(true);
-			//session.setAttribute("userSession", patient);
-			//request.getRequestDispatcher(".jsp").forward(request, response);		
-          request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
+			Patient patient = new Patient();
+			patient.setname(request.getParameter("name"));
+			patient.setsurname(request.getParameter("surname"));
+			patient.setaffiliateNumberHP(Integer.parseInt(request.getParameter("affiliateNHP")));
+			patient.setHealthPlanId(Integer.parseInt(request.getParameter("healthPlanId")));
+			patient.setbirthdate(Integer.parseInt(request.getParameter("birthdate")));
+			
+			ctrl.addPatient(patient);
+			request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
 		}
 	}
-
+}

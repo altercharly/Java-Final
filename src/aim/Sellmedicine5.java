@@ -30,21 +30,17 @@ public class Sellmedicine5 extends HttpServlet {
 		}
 	}
 
-    	
-    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		HttpSession mysession = (HttpSession) request.getSession();
-    		Medicine medicine = (Medicine) mysession.getAttribute("medicine");
-    		int idMedicine = medicine.getidMedicine();
-    		String cantItem = request.getParameter("cantItem");
-    		int cantItems = Integer.parseInt(cantItem);
-    		
-      		mysession.setAttribute("cantItems",cantItems);
-    		System.out.println("Items registered: " + cantItems);
-
-    		Item item= (Item) mysession.getAttribute("itemsel");
-	    	business.Controller ctrl = new Controller();
-	    	double calcPrice = (double)ctrl.calcPriceItem(item, cantItems);
-		request.setAttribute("calcPrice", calcPrice);
-		request.getRequestDispatcher("/WEB-INF/sellmedicine6.jsp").forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		User loggedUser = session != null ? (User) session.getAttribute("userSession") : null;
+		if (loggedUser != null) {
+			Controller ctrl = new Controller();
+			int cantItems = Integer.parseInt(request.getParameter("cantItem"));
+    		Item item = (Item) session.getAttribute("itemsel");
+    		double calcPrice = (double) ctrl.calcPriceItem(item, cantItems);
+    		session.setAttribute("cantItems",cantItems);
+    		request.setAttribute("calcPrice", calcPrice);
+    		request.getRequestDispatcher("/WEB-INF/sellmedicine6.jsp").forward(request, response);
+		}
 	}
 }
