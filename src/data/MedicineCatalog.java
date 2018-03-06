@@ -92,7 +92,7 @@ public class MedicineCatalog {
 
     public String addMedicine (Medicine medicine) {
         //TODO: Insert the new medicine in the DB
-    	            	
+    	String message = "";
     	ResultSet rs=null;
 		PreparedStatement stmt=null;
 		
@@ -107,7 +107,7 @@ public class MedicineCatalog {
 			rs=stmt.getGeneratedKeys();
 			
 			if(rs!=null && rs.next()){
-				String message = "New medicine added";
+				message = "New medicine added";
 			}
 			
 		} catch (SQLException e) {
@@ -119,17 +119,17 @@ public class MedicineCatalog {
 			try {
 				if(rs!=null ) rs.close();
 				if(stmt != null) stmt.close();
-				String message = "New medicine not added";
+				message = "New medicine not added";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				String message = "Professional not added";
+				message = "Professional not added";
 			}
 			
 			FactoryConnection.getInstancia().releaseConn();
 		}
     	
-    	String message = "New medicine added";
+    	message = "New medicine added";
 
         return message;
     }

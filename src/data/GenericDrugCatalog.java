@@ -9,12 +9,10 @@ import java.sql.SQLException;
 import entities.*;
 
 public class GenericDrugCatalog {
-	//TODO: create the method to conect with the DB
+	//TODO: create the method to connect with the DB
 
-
-    @SuppressWarnings("null")
 	public ArrayList<GenericDrug> getgenericDrugs () {
-        //TODO: return all the genericdrugs to select one when create a new medicine
+        //TODO: return all the generic drugs to select one when create a new medicine
         ArrayList<GenericDrug> genericDrugs = new ArrayList<GenericDrug>();
         
  		
@@ -64,6 +62,7 @@ public class GenericDrugCatalog {
 
     public String saveNewgenericDrug (GenericDrug drug) {
         //TODO: save in the DB the new genericdrugs and return de new ID (optional)
+    	String message = "";
     	ResultSet rs=null;
 		PreparedStatement stmt=null;
 		
@@ -88,7 +87,7 @@ public class GenericDrugCatalog {
 			try {
 				if(rs!=null ) rs.close();
 				if(stmt != null) stmt.close();
-				String message = "Generic drug not added";
+				message = "Generic drug not added";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -99,7 +98,7 @@ public class GenericDrugCatalog {
 		}
     	
  
-    	String message = "Generic drug added";
+    	message = "Generic drug added";
 
         return message;
     }

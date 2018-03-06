@@ -1,17 +1,12 @@
 package data;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
 import java.util.ArrayList;
 
 import entities.Item;
-import entities.Prescription;
-import entities.Prescription_Item;
 
 public class ItemCatalog {
 

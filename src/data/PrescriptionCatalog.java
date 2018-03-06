@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
-import entities.Patient;
 import entities.Prescription;
 
 public class PrescriptionCatalog {

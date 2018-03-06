@@ -1,13 +1,8 @@
 package data;
 
-import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
-
-
 
 import entities.*;
 
