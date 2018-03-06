@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Date;
-
 public class Patient {
 	
 	int idPatient;

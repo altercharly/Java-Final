@@ -8,7 +8,7 @@ public class Prescription {
 	Date prescriptionDate;
 	int idpatient;
 	int idproffesional;
-	int idItem;  // think if this have to be an array
+	int idItem;
 	double total;
 	
 	//set

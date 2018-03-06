@@ -1,9 +1,6 @@
 package entities;
 
 public class Prescription_Item {
-	
-	// I dont know is this class is useless
-	//Its not useless! keeps the number of each medicine in a prescription
 	int idPrescription;
 	int idItem;
 	int cantItem;
