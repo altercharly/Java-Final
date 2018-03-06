@@ -136,6 +136,13 @@ public ArrayList<GenericDrug> getAllGenericDrug (){
 	return gdrugs;
 }
 
+public ArrayList<Medicine> getMedicines (){
+	ArrayList<Medicine> medicines = new ArrayList<Medicine>();
+	MedicineCatalog medicineCatalog = new MedicineCatalog();
+	medicines = medicineCatalog.getMedicines();
+	return medicines;
+}
+
 
 public ArrayList<Medicine> getMedicineByDrug (int idgdrug){
 	// returns all the medicine with the same generic drug

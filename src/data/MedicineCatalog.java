@@ -6,6 +6,46 @@ import java.util.ArrayList;
 import entities.*;
 
 public class MedicineCatalog {
+	public ArrayList<Medicine> getMedicines () {
+        ArrayList<Medicine> medicines = new ArrayList<Medicine>();
+		String sql="SELECT * FROM medicine";
+		PreparedStatement sentencia=null;
+		ResultSet rs=null;
+		Connection con = FactoryConnection.getInstancia().getConn();
+		
+		try {			
+			sentencia= con.prepareStatement(sql);
+			rs= sentencia.executeQuery();
+			while (rs.next()) {
+				Medicine medicine = new Medicine();
+				medicine.setdescription(rs.getString("description"));
+				medicine.setname(rs.getString("name"));
+				medicine.setidMedicine(rs.getInt("idmedicine"));
+				
+				GenericDrug genericDrug =new GenericDrug();
+				genericDrug.setidDrug((rs.getInt("iddrug")));
+				medicine.setgenericDrugs(genericDrug);
+				
+				medicines.add(medicine);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) {
+					rs.close();
+				}
+				if (sentencia!=null && !sentencia.isClosed()) {
+					sentencia.close();
+				}
+				FactoryConnection.getInstancia().releaseConn();
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			}
+		}
+		return medicines;
+    }
+	
     //TODO:Create the methods to interact whit the DB
     public Medicine getMedicine (String name) {
         //TODO: select from medicine where medicineName === name
