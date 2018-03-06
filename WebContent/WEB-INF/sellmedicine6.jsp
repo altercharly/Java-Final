@@ -23,11 +23,11 @@
 		<form action="sellmedicine6" method="post">
 			<h1>Sell Medicine by prescription only</h1>
 			<h2>Please confirm the sale: </h2>
-			Professional Name: <%=prof.getsurname() %>, <%=prof.getname() %>
-			Medicine name: <%=med.getname() %>
-			Selected items: <%=cantItems %>
-			Calculated price: <%=cantPrice %>
-			<button type="submit">Register</button>
+			<p>Professional Name: <%=prof.getsurname() %>, <%=prof.getname() %></p>
+			<p>Medicine name: <%=med.getname() %></p>
+			<p>Selected items: <%=cantItems %></p>
+			<p>Calculated price: <%=cantPrice %></p>
+			<button type="submit" class="form-submit">Register</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>

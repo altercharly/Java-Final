@@ -32,8 +32,8 @@
 				Health Plan:
 				<select name="healthPlanId" required>
 					<% for (HealthPlan hp : lista) { %>
-						<option value="<% out.println(hp.getidHealthPlan()); %>">
-							<% out.println(hp.getnameHP()); %>
+						<option value="<%=hp.getidHealthPlan()%>">
+							<%=hp.getnameHP()%>
 						</option>
 					<% } %>
 				</select>
@@ -42,7 +42,7 @@
 				Affiliate Number Health Plan:
 				<input name="affiliateNHP" required>
 			</label>
-			<button type="submit">Register</button>
+			<button type="submit" class="form-submit">Register</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>

@@ -16,12 +16,11 @@ public class PresentationCatalog {
 		public ArrayList<Presentation> getPresentationByMedicine (int idmedicine){
 			 //TODO: Think a little more about this method, the idea is get all presentation with the same idmedicine
 	        ArrayList<Presentation> presentations = new ArrayList<Presentation>();
-	        
-	        
+
 	        String sql="SELECT presentation.idpresentation, presentation.description FROM presentation INNER JOIN item on item.idpresentation = presentation.idpresentation where item.idmedicine = ?";
 			PreparedStatement sentencia=null;
 			ResultSet rs=null;
-			
+
 			Connection con = FactoryConnection.getInstancia().getConn();
 			try 
 			{			

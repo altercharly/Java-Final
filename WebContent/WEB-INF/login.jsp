@@ -12,7 +12,7 @@
 <body>
 	<%@include file="../parts/header.jsp" %>
 	<div class="content">
-		<form action="login" method="post" class="login-form">
+		<form action="login" method="post">
 			<h1>Please login</h1>
 			<label>
 				User:
@@ -22,7 +22,7 @@
 				Password:
 				<input name="password" type="password" required>
 			</label>     
-			<button type="submit" class="login-submit">Login</button>
+			<button type="submit" class="form-submit">Login</button>
 			<span class="errorMessage"><%=errorMessage %></span>
 		</form>
 	</div>

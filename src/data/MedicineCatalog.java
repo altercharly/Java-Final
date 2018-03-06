@@ -97,7 +97,7 @@ public class MedicineCatalog {
     public void addMedicine2 (Medicine m){
     	  FactoryConnection fc = new FactoryConnection();
 
-          // Pasamos el objeto Connection de nuestra clase "ConexionBD" a esta instancia por medio del método getConnection()
+          // Pasamos el objeto Connection de nuestra clase "ConexionBD" a esta instancia por medio del mï¿½todo getConnection()
           Connection con = fc.getConn();
 
           // Crear sentencia SQL para insertar en la base de datos
@@ -111,14 +111,14 @@ public class MedicineCatalog {
   			rs.updateString(2, m.getdescription());
   			((PreparedStatement) rs).setInt(3, m.getgeneric().getidDrug());
 
-              // Indicamos que comience la actualización de la tabla en nuestra base de datos
+              // Indicamos que comience la actualizaciï¿½n de la tabla en nuestra base de datos
               st.executeUpdate(query);
 
               // Cerramos las conexiones, en orden inverso a su apertura
               st.close();
               con.close();
 
-              System.out.println("Llamada agregada con éxito a la base de datos.");
+              System.out.println("Llamada agregada con ï¿½xito a la base de datos.");
           } catch (SQLException e) {
               System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
           }

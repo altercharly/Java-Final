@@ -20,16 +20,16 @@
 	<div class="content">
 		<form action="sellmedicine5" method="post">
 			<h1>Sell Medicine by prescription only</h1>
+			<p>Professional Name: <%=prof.getsurname() %>, <%=prof.getname() %></p>
+			<p>Medicine name: <%=med.getname() %></p>
+			<p>Stock Medicine: <%=item.getcantStock() %></p>
+			<p>Price: <%=item.getprice() %></p>
 			<h2>Please choose quantity of items:</h2>
-			Professional Name: <%=prof.getsurname() %>, <%=prof.getname() %>
-			Medicine name: <%=med.getname() %>
-			Stock Medicine: <%=item.getcantStock() %>
-			Price: <%=item.getprice() %>
 			<label>
 				Items number:
 				<input name="cantItem" required autofocus>
 			</label>
-			<button type="submit">Select</button>
+			<button type="submit" class="form-submit">Select</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>

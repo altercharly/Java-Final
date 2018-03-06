@@ -19,7 +19,7 @@
 				Affiliate Number:
 				<input name="affiliateNumberHP" required>
 			</label>
-			<button type="submit">Search</button>
+			<button type="submit" class="form-submit">Search</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>

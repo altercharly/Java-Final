@@ -10,6 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Add medicine</title>
+	<link href="Style/login.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="../parts/header.jsp" %>
@@ -20,8 +21,8 @@
 				Generic drug:
 				<select name="iddrug" required autofocus>
 					<% for (GenericDrug gen : lista) { %>
-						<option value="<% out.println(gen.getidDrug()); %>">
-							<% out.println(gen.getdrugName()); %>
+						<option value="<%=gen.getidDrug()%>">
+							<%=gen.getdrugName()%>
 						</option>
 					<% } %>
 				</select>
@@ -34,7 +35,7 @@
 				Description:
 				<input name="description" required>
 			</label>
-			<button type="submit">Register</button>
+			<button type="submit" class="form-submit">Register</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>

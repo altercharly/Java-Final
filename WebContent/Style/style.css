@@ -24,3 +24,43 @@ body {
 	/* box properties */
 	flex-shrink: 0;
 }
+
+form {
+	/* box properties */
+	display: flex;
+	flex-direction: column;
+	width: 60vw;
+	margin: 10vh auto 0;
+	padding: 4vh 4vw;
+	/* box borders */
+	border-radius: 8px;
+	/* background properties */
+	background-color: #009688;
+	/* text properties */
+	color: #FFF;
+}
+
+@media only screen and (max-width: 767px) {
+	form {
+		/* box properties */
+		width: 90%;
+	}
+}
+
+label {
+	/* box properties */
+	display: flex;
+	flex-direction: column;
+	margin: 2vh 2vw;
+}
+
+.form-submit {
+	/* box properties */
+	margin: 2vh 2vw;
+}
+
+.errorMessage {
+	/* text properties */
+	color: #9F0000;
+	font-weight: bold;
+}

@@ -38,7 +38,7 @@ public class Sellmedicine3 extends HttpServlet {
 			Controller ctrl = new Controller();
 			
 			Medicine medicine = new Medicine();
-			medicine=ctrl.getMedicineByName(request.getParameter("medicineName"));
+			medicine = ctrl.getMedicineByName(request.getParameter("medicineName"));
 			
 			ArrayList<Presentation> pres = new ArrayList<Presentation>();
 			pres = ctrl.getPresentationByMedicine(medicine.getidMedicine());

@@ -21,7 +21,7 @@
 				Generic drug name:
 				<input name="gDrugName" required autofocus>
 			</label>
-			<button type="submit">Search Medicine</button>
+			<button type="submit" class="form-submit">Search Medicine</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>

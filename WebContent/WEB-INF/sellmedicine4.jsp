@@ -21,8 +21,8 @@
 				Presentation:
 				<select name="idPresentation" required autofocus>
 					<% for (Presentation pre : lista) { %>
-						<option value="<% out.println(pre.getIdPresentation()); %>">
-							<% out.println(pre.getDescription()); %>
+						<option value="<%=pre.getIdPresentation()%>">
+							<%=pre.getDescription()%>
 						</option>
 					<% } %>
 				</select>
@@ -31,7 +31,7 @@
 				Reg. Number Professional:
 				<input name="regNumberP" required>
 			</label>
-			<button type="submit">Select</button>
+			<button type="submit" class="form-submit">Select</button>
 		</form>
 	</div>
 	<%@include file="../parts/footer.html" %>
